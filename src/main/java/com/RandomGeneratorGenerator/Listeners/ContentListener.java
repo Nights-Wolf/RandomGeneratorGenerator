@@ -22,15 +22,13 @@ public class ContentListener implements ActionListener {
     private final SaveName saveName;
     private final SaveTag saveTag;
     private final SaveContent saveContent;
-    private final Tag tag;
 
     @Autowired
-    public ContentListener(GUI gui, SaveName saveName, SaveTag saveTag, SaveContent saveContent, Tag tag) {
+    public ContentListener(GUI gui, SaveName saveName, SaveTag saveTag, SaveContent saveContent) {
         this.gui = gui;
         this.saveName = saveName;
         this.saveTag = saveTag;
         this.saveContent = saveContent;
-        this.tag = tag;
     }
 
     @EventListener(ApplicationStartedEvent.class)
@@ -43,12 +41,13 @@ public class ContentListener implements ActionListener {
         Object src = e.getSource();
         if (src == gui.getContentButton()) {
             Name name = new Name();
+            Tag tag = new Tag();
 
-            name.setName_name("Dawid");
+            name.setName_name("Artur");
+            tag.setTag_name("Names");
 
             saveName.newName(name);
-
-            tag.setTag_id(1);
+            saveTag.newTag(tag);
 
             Content content = new Content();
             content.setName_id(name.getName_id());
