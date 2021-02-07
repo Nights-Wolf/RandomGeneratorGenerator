@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Tue Feb 02 19:43:23 CET 2021:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0177-640e-6ef2-000005bf4898 
+Sun Feb 07 19:55:33 CET 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0177-7dd9-5d27-000005afc630 
 on database directory C:\Users\Dawid\Desktop\RandomGeneratorGenerator\rgg_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@4e0e2f2a 
 Loaded from file:/C:/Users/Dawid/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation

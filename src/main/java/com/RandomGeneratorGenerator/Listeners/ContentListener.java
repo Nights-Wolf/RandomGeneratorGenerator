@@ -1,9 +1,12 @@
 package com.RandomGeneratorGenerator.Listeners;
 
 import com.RandomGeneratorGenerator.GUI;
+import com.RandomGeneratorGenerator.model.Content;
 import com.RandomGeneratorGenerator.model.Name;
+import com.RandomGeneratorGenerator.model.Tag;
 import com.RandomGeneratorGenerator.service.SaveContent;
 import com.RandomGeneratorGenerator.service.SaveName;
+import com.RandomGeneratorGenerator.service.SaveTag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
@@ -13,29 +16,45 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 @Component
-public class NameListener implements ActionListener {
+public class ContentListener implements ActionListener {
 
-    private final SaveName saveName;
     private final GUI gui;
+    private final SaveName saveName;
+    private final SaveTag saveTag;
+    private final SaveContent saveContent;
+    private final Tag tag;
 
     @Autowired
-    public NameListener(SaveName saveName, GUI gui) {
-        this.saveName = saveName;
+    public ContentListener(GUI gui, SaveName saveName, SaveTag saveTag, SaveContent saveContent, Tag tag) {
         this.gui = gui;
+        this.saveName = saveName;
+        this.saveTag = saveTag;
+        this.saveContent = saveContent;
+        this.tag = tag;
     }
 
     @EventListener(ApplicationStartedEvent.class)
     public void addListener() {
-        gui.getSaveButton().addActionListener(this);
+        gui.getContentButton().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
-        if (src == gui.getSaveButton()) {
+        if (src == gui.getContentButton()) {
             Name name = new Name();
+
             name.setName_name("Dawid");
+
             saveName.newName(name);
+
+            tag.setTag_id(1);
+
+            Content content = new Content();
+            content.setName_id(name.getName_id());
+            content.setTag_id(tag.getTag_id());
+
+            saveContent.newContent(content);
         }
     }
 }

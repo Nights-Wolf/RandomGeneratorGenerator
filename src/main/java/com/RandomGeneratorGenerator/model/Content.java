@@ -11,11 +11,12 @@ import javax.persistence.Id;
 @Entity
 @Setter
 @Getter
-public class Name {
+public class Content {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long content_id;
+    private long tag_id;
     private long name_id;
-    private String name_name;
 
 }
