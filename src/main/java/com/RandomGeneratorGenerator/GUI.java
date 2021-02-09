@@ -13,6 +13,8 @@ public class GUI implements Runnable {
     private final JButton saveButton = new JButton("Save name");
     private final JButton tagButton = new JButton("Save tag");
     private final JButton contentButton = new JButton("Save content");
+    private final JButton generateNumber = new JButton("Generate Number!");
+    private final JTextArea generatedNames = new JTextArea(10, 10);
 
     private Thread runner = null;
 
@@ -36,6 +38,8 @@ public class GUI implements Runnable {
         pan.add(saveButton);
         pan.add(tagButton);
         pan.add(contentButton);
-
+        pan.add(generateNumber);
+        generatedNames.setEditable(false);
+        pan.add(generatedNames);
     }
 }

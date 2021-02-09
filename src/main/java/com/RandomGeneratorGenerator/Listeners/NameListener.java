@@ -34,7 +34,7 @@ public class NameListener implements ActionListener {
         Object src = e.getSource();
         if (src == gui.getSaveButton()) {
             Name name = new Name();
-            name.setName_name("Dawid");
+            name.setName_name("Kamila");
             saveName.newName(name);
         }
     }
