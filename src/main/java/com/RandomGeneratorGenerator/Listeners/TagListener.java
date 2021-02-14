@@ -36,5 +36,6 @@ public class TagListener implements ActionListener {
             tag.setTag_name("Names");
             saveTag.newTag(tag);
         }
+        saveTag.addTagsToBox();
     }
 }
