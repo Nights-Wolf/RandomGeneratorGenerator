@@ -95,16 +95,21 @@ try {
         }
 
             long[] chosenNames = new long[10];
+try {
 
-            for (int i = 0; i < chosenNames.length; ++i) {
-                if (namesFromDb.size() < chosenNames.length) {
-                    JOptionPane.showMessageDialog(new JFrame("Warning!"),
-                            "Not enough records in database (max. " + namesFromDb.size() + " results)");
-                    chosenNames = new long[namesFromDb.size()];
-                    chosenNames[i] = namesFromDb.get(i);
-                }
-                chosenNames[i] = namesFromDb.get(i);
-            }
+    for (int i = 0; i < chosenNames.length; ++i) {
+        if (namesFromDb.size() < chosenNames.length) {
+            JOptionPane.showMessageDialog(new JFrame("Warning!"),
+                    "Not enough records in database (max. " + namesFromDb.size() + " results)");
+            chosenNames = new long[namesFromDb.size()];
+            chosenNames[i] = namesFromDb.get(i);
+        }
+        chosenNames[i] = namesFromDb.get(i);
+    }
+}catch (IndexOutOfBoundsException e) {
+    JOptionPane.showMessageDialog(new JFrame("Warning!"),
+            "Choose at least one tag!");
+}
             return chosenNames;
         }
     }
