@@ -13,4 +13,7 @@ public interface ContentRepository extends JpaRepository<Content, Long> {
 
     @Query(value = "SELECT name_id FROM Content WHERE tag_id = :id")
     ArrayList<Long> getNameById(@Param("id") Long id);
+
+    @Query(value = "SELECT name_id FROM Content WHERE tag_id = :id AND name_id = :name_id")
+    long filterName(@Param("id") Long id, @Param("name_id") Long name_id);
 }

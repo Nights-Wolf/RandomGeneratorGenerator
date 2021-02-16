@@ -28,6 +28,7 @@ public class SaveTag {
 
     @EventListener(ApplicationStartedEvent.class)
     public void addTagsToBox() {
+        String none = "-None-";
         ArrayList<String> tagsFromDb = new ArrayList<>();
         long tagIdCount = tagRepository.count();
         String[] tagsName = new String[(int)tagIdCount];
@@ -40,6 +41,11 @@ public class SaveTag {
         for (int e = 0; e < tagsName.length; ++e) {
            tagsName[e] = tagsFromDb.get(e);
         }
+
+        gui.getFirstTags().addItem(none);
+        gui.getSecondTags().addItem(none);
+        gui.getThirdTags().addItem(none);
+        gui.getFourthTags().addItem(none);
 
         for (String s : tagsName) {
             gui.getFirstTags().addItem(s);

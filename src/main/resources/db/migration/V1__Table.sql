@@ -1,17 +1,20 @@
 CREATE TABLE Tag (
 tag_id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-tag_name VARCHAR(20),
+tag_name VARCHAR(50),
 CONSTRAINT tag_pk PRIMARY KEY (tag_id)
 );
 
 INSERT INTO Tag (tag_name) VALUES ('Name');
 INSERT INTO Tag (tag_name) VALUES ('Item');
-INSERT INTO Tag (tag_name) VALUES ('Gender');
+INSERT INTO Tag (tag_name) VALUES ('Male');
+INSERT INTO Tag (tag_name) VALUES ('Female');
 INSERT INTO Tag (tag_name) VALUES ('Race');
+INSERT INTO Tag (tag_name) VALUES ('Achtfanian');
+INSERT INTO Tag (tag_name) VALUES ('MY');
 
 CREATE TABLE Name (
 name_id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-name_name VARCHAR(20),
+name_name VARCHAR(50),
 CONSTRAINT name_pk PRIMARY KEY (name_id)
 );
 
@@ -30,6 +33,8 @@ INSERT INTO Name (name_name) VALUES ('Zuza');
 INSERT INTO Name (name_name) VALUES ('Grześ');
 INSERT INTO Name (name_name) VALUES ('Magic Poison');
 INSERT INTO Name (name_name) VALUES ('Wand');
+INSERT INTO Name (name_name) VALUES ('Sword');
+INSERT INTO Name (name_name) VALUES ('Wunderbachtenfreunde');
 
 
 CREATE TABLE Content (
@@ -56,6 +61,13 @@ INSERT INTO Content(tag_id, name_id) VALUES (1, 12);
 INSERT INTO Content(tag_id, name_id) VALUES (1, 13);
 INSERT INTO Content(tag_id, name_id) VALUES (2, 14);
 INSERT INTO Content(tag_id, name_id) VALUES (2, 15);
+INSERT INTO Content(tag_id, name_id) VALUES (2, 16);
+INSERT INTO Content(tag_id, name_id) VALUES (2, 17);
+INSERT INTO Content(tag_id, name_id) VALUES (3, 1);
+INSERT INTO Content(tag_id, name_id) VALUES (3, 2);
+INSERT INTO Content(tag_id, name_id) VALUES (6, 1);
+INSERT INTO Content(tag_id, name_id) VALUES (6, 2);
+INSERT INTO Content(tag_id, name_id) VALUES (7, 1);
 
 CREATE TABLE Kits (
 kit_id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
