@@ -8,7 +8,7 @@ INSERT INTO Tag (tag_name) VALUES ('Name');
 INSERT INTO Tag (tag_name) VALUES ('Item');
 INSERT INTO Tag (tag_name) VALUES ('Male');
 INSERT INTO Tag (tag_name) VALUES ('Female');
-INSERT INTO Tag (tag_name) VALUES ('Race');
+INSERT INTO Tag (tag_name) VALUES ('Human');
 INSERT INTO Tag (tag_name) VALUES ('Achtfanian');
 INSERT INTO Tag (tag_name) VALUES ('MY');
 
@@ -65,9 +65,30 @@ INSERT INTO Content(tag_id, name_id) VALUES (2, 16);
 INSERT INTO Content(tag_id, name_id) VALUES (2, 17);
 INSERT INTO Content(tag_id, name_id) VALUES (3, 1);
 INSERT INTO Content(tag_id, name_id) VALUES (3, 2);
+INSERT INTO Content(tag_id, name_id) VALUES (4, 3);
+INSERT INTO Content(tag_id, name_id) VALUES (4, 7);
 INSERT INTO Content(tag_id, name_id) VALUES (6, 1);
 INSERT INTO Content(tag_id, name_id) VALUES (6, 2);
+INSERT INTO Content(tag_id, name_id) VALUES (6, 3);
+INSERT INTO Content(tag_id, name_id) VALUES (6, 7);
 INSERT INTO Content(tag_id, name_id) VALUES (7, 1);
+INSERT INTO Content(tag_id, name_id) VALUES (7, 5);
+INSERT INTO Content(tag_id, name_id) VALUES (7, 3);
+INSERT INTO Content(tag_id, name_id) VALUES (5, 1);
+INSERT INTO Content(tag_id, name_id) VALUES (5, 2);
+INSERT INTO Content(tag_id, name_id) VALUES (5, 3);
+INSERT INTO Content(tag_id, name_id) VALUES (5, 4);
+INSERT INTO Content(tag_id, name_id) VALUES (5, 5);
+INSERT INTO Content(tag_id, name_id) VALUES (5, 6);
+INSERT INTO Content(tag_id, name_id) VALUES (5, 7);
+INSERT INTO Content(tag_id, name_id) VALUES (5, 8);
+INSERT INTO Content(tag_id, name_id) VALUES (5, 9);
+INSERT INTO Content(tag_id, name_id) VALUES (5, 10);
+INSERT INTO Content(tag_id, name_id) VALUES (5, 11);
+INSERT INTO Content(tag_id, name_id) VALUES (5, 12);
+INSERT INTO Content(tag_id, name_id) VALUES (5, 13);
+
+
 
 CREATE TABLE Kits (
 kit_id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),

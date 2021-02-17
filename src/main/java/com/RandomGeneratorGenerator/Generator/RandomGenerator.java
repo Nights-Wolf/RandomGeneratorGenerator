@@ -44,17 +44,23 @@ public class RandomGenerator {
                 String selectedTagSecond = String.valueOf(gui.getSecondTags().getSelectedItem());
                 long secondTagIdValue = tagRepository.getTagByName(selectedTagSecond);
                 for (Long tag : firstTagNamesValue) {
-                    secondTagNamesValue.add(contentRepository.filterName(secondTagIdValue, tag));
+                    try {
+                        secondTagNamesValue.add(contentRepository.filterName(secondTagIdValue, tag));
+                    } catch (AopInvocationException f) {
+                    }
                 }
             }
-        } catch (AopInvocationException e) {
+        }catch (AopInvocationException e) {
         }
+
 try {
     if (secondTagNamesValue.size() > 0) {
         String selectedTagThird = String.valueOf(gui.getThirdTags().getSelectedItem());
         long thirdTagIdValue = tagRepository.getTagByName(selectedTagThird);
         for (Long tag : secondTagNamesValue) {
-            thirdTagNamesValue.add(contentRepository.filterName(thirdTagIdValue, tag));
+            try {
+                thirdTagNamesValue.add(contentRepository.filterName(thirdTagIdValue, tag));
+            }catch (AopInvocationException f){}
         }
     }
         } catch (AopInvocationException e) {
@@ -64,7 +70,10 @@ try {
         String selectedTagFourth = String.valueOf(gui.getFourthTags().getSelectedItem());
         long fourthTagIdValue = tagRepository.getTagByName(selectedTagFourth);
         for (Long tag : thirdTagNamesValue) {
-            fourthTagNamesValue.add(contentRepository.filterName(fourthTagIdValue, tag));
+            try {
+                fourthTagNamesValue.add(contentRepository.filterName(fourthTagIdValue, tag));
+            } catch (AopInvocationException f) {
+            }
         }
     }
         } catch (AopInvocationException e) {
@@ -94,7 +103,9 @@ try {
             }
         }
 
-            long[] chosenNames = new long[10];
+       int generatedNamesQuantity = Integer.parseInt(gui.getQuantityToGenerate().getText());
+
+            long[] chosenNames = new long[generatedNamesQuantity];
 try {
 
     for (int i = 0; i < chosenNames.length; ++i) {

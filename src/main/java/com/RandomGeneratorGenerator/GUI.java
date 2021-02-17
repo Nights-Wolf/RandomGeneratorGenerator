@@ -23,6 +23,7 @@ public class GUI implements Runnable {
     private final JTabbedPane tabs = new JTabbedPane();
     private final JPanel moreTagsPanel = new JPanel();
     private final JButton saveSet = new JButton("Save set");
+    private final JTextField quantityToGenerate = new JTextField("10", 3);
 
     private Thread runner = null;
 
@@ -66,6 +67,7 @@ public class GUI implements Runnable {
         moreTagsPanel.add(thirdTags);
         moreTagsPanel.add(fourthTags);
         tagPanel.add(moreTagsPanel, BorderLayout.CENTER);
+        generatingPan.add(quantityToGenerate);
         generatingPan.add(saveSet);
         generatedNames.setEditable(false);
         generatingPan.add(generatedNames);

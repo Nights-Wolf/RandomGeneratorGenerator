@@ -4,6 +4,7 @@ import com.RandomGeneratorGenerator.GUI;
 import com.RandomGeneratorGenerator.Generator.RandomGenerator;
 import com.RandomGeneratorGenerator.model.Name;
 import com.RandomGeneratorGenerator.repository.NameRepository;
+import org.hibernate.engine.internal.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
@@ -13,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
