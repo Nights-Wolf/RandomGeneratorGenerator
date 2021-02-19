@@ -1,8 +1,8 @@
-package com.RandomGeneratorGenerator.listeners;
+package com.RandomGeneratorGenerator.listener;
 
 import com.RandomGeneratorGenerator.GUI;
-import com.RandomGeneratorGenerator.model.Name;
-import com.RandomGeneratorGenerator.service.SaveName;
+import com.RandomGeneratorGenerator.model.Tag;
+import com.RandomGeneratorGenerator.service.SaveTag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
@@ -12,29 +12,30 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 @Component
-public class NameListener implements ActionListener {
+public class TagListener implements ActionListener {
 
-    private final SaveName saveName;
     private final GUI gui;
+    private final SaveTag saveTag;
 
     @Autowired
-    public NameListener(SaveName saveName, GUI gui) {
-        this.saveName = saveName;
+    public TagListener(GUI gui, SaveTag saveTag) {
         this.gui = gui;
+        this.saveTag = saveTag;
     }
 
     @EventListener(ApplicationStartedEvent.class)
     public void addListener() {
-        gui.getSaveButton().addActionListener(this);
+        gui.getTagButton().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
-        if (src == gui.getSaveButton()) {
-            Name name = new Name();
-            name.setName_name("Kamila");
-            saveName.newName(name);
+        if (src == gui.getTagButton()) {
+            Tag tag = new Tag();
+            tag.setTag_name("Names");
+            saveTag.newTag(tag);
         }
+        saveTag.addTagsToBox();
     }
 }
