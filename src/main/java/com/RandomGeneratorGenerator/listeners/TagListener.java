@@ -1,4 +1,4 @@
-package com.RandomGeneratorGenerator.Listeners;
+package com.RandomGeneratorGenerator.listeners;
 
 import com.RandomGeneratorGenerator.GUI;
 import com.RandomGeneratorGenerator.model.Tag;

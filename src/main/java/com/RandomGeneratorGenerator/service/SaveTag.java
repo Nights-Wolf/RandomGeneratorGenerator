@@ -31,15 +31,10 @@ public class SaveTag {
         String none = "-None-";
         ArrayList<String> tagsFromDb = new ArrayList<>();
         long tagIdCount = tagRepository.count();
-        String[] tagsName = new String[(int)tagIdCount];
 
         for (long i = 1; i <= tagIdCount; i++) {
             String myTags = tagRepository.getTagsNames(i);
             tagsFromDb.add(myTags);
-        }
-
-        for (int e = 0; e < tagsName.length; ++e) {
-           tagsName[e] = tagsFromDb.get(e);
         }
 
         gui.getFirstTags().addItem(none);
@@ -47,7 +42,7 @@ public class SaveTag {
         gui.getThirdTags().addItem(none);
         gui.getFourthTags().addItem(none);
 
-        for (String s : tagsName) {
+        for (String s : tagsFromDb) {
             gui.getFirstTags().addItem(s);
             gui.getSecondTags().addItem(s);
             gui.getThirdTags().addItem(s);

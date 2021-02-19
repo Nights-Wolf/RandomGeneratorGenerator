@@ -1,4 +1,4 @@
-package com.RandomGeneratorGenerator.Listeners;
+package com.RandomGeneratorGenerator.listeners;
 
 import com.RandomGeneratorGenerator.GUI;
 import com.RandomGeneratorGenerator.model.Content;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 @Component
 public class ContentListener implements ActionListener {

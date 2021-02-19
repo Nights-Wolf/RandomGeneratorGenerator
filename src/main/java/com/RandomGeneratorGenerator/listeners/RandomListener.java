@@ -1,10 +1,9 @@
-package com.RandomGeneratorGenerator.Listeners;
+package com.RandomGeneratorGenerator.listeners;
 
 import com.RandomGeneratorGenerator.GUI;
-import com.RandomGeneratorGenerator.Generator.RandomGenerator;
+import com.RandomGeneratorGenerator.generator.RandomGenerator;
 import com.RandomGeneratorGenerator.model.Name;
 import com.RandomGeneratorGenerator.repository.NameRepository;
-import org.hibernate.engine.internal.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
@@ -12,10 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @Component
 public class RandomListener implements ActionListener {
@@ -40,13 +36,14 @@ public class RandomListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        gui.getGeneratedNames().setText("");
         Object src = e.getSource();
         if (src == gui.getGenerateNumber()) {
+            ArrayList<String> names = new ArrayList<>();
 
             for (Long i : randomGenerator.generateNumber()) {
-                gui.getGeneratedNames().append(nameRepository.getNamesById(i) + "\n");
+                names.add(nameRepository.getNamesById(i));
             }
+            gui.getGeneratedNames().setListData(names.toArray());
         }
     }
 }

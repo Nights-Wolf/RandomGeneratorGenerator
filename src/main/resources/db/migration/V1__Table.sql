@@ -88,14 +88,6 @@ INSERT INTO Content(tag_id, name_id) VALUES (5, 11);
 INSERT INTO Content(tag_id, name_id) VALUES (5, 12);
 INSERT INTO Content(tag_id, name_id) VALUES (5, 13);
 
-
-
-CREATE TABLE Kits (
-kit_id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-kit_name VARCHAR(20),
-CONSTRAINT kits_pk PRIMARY KEY (kit_id)
-);
-
 CREATE TABLE KitsName (
 kitsName_id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 kitsName_name VARCHAR(20),
@@ -105,8 +97,8 @@ CONSTRAINT kitsName_pk PRIMARY KEY (kitsName_id)
 CREATE TABLE KitsContent (
 kitsContent_id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 kitsName_id INTEGER,
-kit_id INTEGER,
+name_id INTEGER,
 CONSTRAINT kitsContent_pk PRIMARY KEY (kitsContent_id),
 CONSTRAINT kitsContent_fk1 FOREIGN KEY (kitsName_id) REFERENCES KitsName(kitsName_id),
-CONSTRAINT kitsContent_fk2 FOREIGN KEY (kit_id) REFERENCES Kits(kit_id)
+CONSTRAINT kitsContent_fk2 FOREIGN KEY (name_id) REFERENCES Name(name_id)
 );

@@ -1,8 +1,7 @@
-package com.RandomGeneratorGenerator.Listeners;
+package com.RandomGeneratorGenerator.listeners;
 
 import com.RandomGeneratorGenerator.GUI;
 import com.RandomGeneratorGenerator.model.Name;
-import com.RandomGeneratorGenerator.service.SaveContent;
 import com.RandomGeneratorGenerator.service.SaveName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationStartedEvent;

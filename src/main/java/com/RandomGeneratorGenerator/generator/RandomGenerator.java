@@ -1,4 +1,4 @@
-package com.RandomGeneratorGenerator.Generator;
+package com.RandomGeneratorGenerator.generator;
 
 import com.RandomGeneratorGenerator.GUI;
 import com.RandomGeneratorGenerator.repository.ContentRepository;
@@ -124,4 +124,3 @@ try {
             return chosenNames;
         }
     }
-//panel wyboru liczby generowanych imion

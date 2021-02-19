@@ -14,7 +14,7 @@ public class GUI implements Runnable {
     private final JButton tagButton = new JButton("Save tag");
     private final JButton contentButton = new JButton("Save content");
     private final JButton generateNumber = new JButton("Generate Name!");
-    private final JTextArea generatedNames = new JTextArea(10, 10);
+    private final JList generatedNames = new JList();
     private final JPanel tagPanel = new JPanel();
     private final JComboBox<String> firstTags = new JComboBox<>();
     private final JComboBox<String> secondTags = new JComboBox<>();
@@ -24,6 +24,12 @@ public class GUI implements Runnable {
     private final JPanel moreTagsPanel = new JPanel();
     private final JButton saveSet = new JButton("Save set");
     private final JTextField quantityToGenerate = new JTextField("10", 3);
+    private final JPanel generatingPan = new JPanel();
+    private final JScrollPane scroller = new JScrollPane();
+    private final JPanel setsChoosingPanel = new JPanel();
+    private final JComboBox<String> setsName = new JComboBox<>();
+    private final JButton choseSet = new JButton("Show set");
+    private final JList setsList = new JList();
 
     private Thread runner = null;
 
@@ -37,11 +43,11 @@ public class GUI implements Runnable {
     @Override
     public void run() {
             JFrame frame = new JFrame("Random Generator Generator");
+            frame.setDefaultLookAndFeelDecorated(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(500, 500);
             frame.setVisible(true);
 
-        JPanel generatingPan = new JPanel();
         generatingPan.setLayout(new FlowLayout(FlowLayout.CENTER));
         frame.add(generatingPan);
 
@@ -52,6 +58,11 @@ public class GUI implements Runnable {
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new FlowLayout());
         frame.add(contentPanel);
+        setsChoosingPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        setsChoosingPanel.add(setsName);
+        setsChoosingPanel.add(choseSet);
+        contentPanel.add(setsChoosingPanel);
+        contentPanel.add(setsList);
 
         tabs.addTab("Generating", generatingPan);
         tabs.addTab("Saving", savingPanel);
@@ -69,7 +80,8 @@ public class GUI implements Runnable {
         tagPanel.add(moreTagsPanel, BorderLayout.CENTER);
         generatingPan.add(quantityToGenerate);
         generatingPan.add(saveSet);
-        generatedNames.setEditable(false);
+        generatedNames.setLayoutOrientation(JList.VERTICAL);
+        generatedNames.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         generatingPan.add(generatedNames);
 
         savingPanel.add(saveButton);
