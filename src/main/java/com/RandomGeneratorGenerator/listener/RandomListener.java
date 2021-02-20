@@ -44,6 +44,14 @@ public class RandomListener implements ActionListener {
                 names.add(nameRepository.getNamesById(i));
             }
             gui.getGeneratedNames().setListData(names.toArray());
+
+            if (names.size() != 0) {
+                gui.getGeneratedNames().setVisible(true);
+                gui.getSaveSet().setVisible(true);
+            } else {
+                gui.getGeneratedNames().setVisible(false);
+                gui.getSaveSet().setVisible(false);
+            }
         }
     }
 }

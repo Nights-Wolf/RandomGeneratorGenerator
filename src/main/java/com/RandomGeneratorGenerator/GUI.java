@@ -10,6 +10,8 @@ import java.awt.*;
 @Getter
 public class GUI implements Runnable {
 
+    private final ImageIcon icon = new ImageIcon("src/main/resources/logo2Bigger.png");
+    private final JLabel iconLabel = new JLabel();
     private final JButton saveButton = new JButton("Save name");
     private final JButton tagButton = new JButton("Save tag");
     private final JButton contentButton = new JButton("Save content");
@@ -23,6 +25,7 @@ public class GUI implements Runnable {
     private final JTabbedPane tabs = new JTabbedPane();
     private final JPanel moreTagsPanel = new JPanel();
     private final JButton saveSet = new JButton("Save set");
+    private final JPanel generatedNamesPanel = new JPanel();
     private final JTextField quantityToGenerate = new JTextField("10", 3);
     private final JPanel generatingPan = new JPanel();
     private final JScrollPane scroller = new JScrollPane();
@@ -43,6 +46,8 @@ public class GUI implements Runnable {
     @Override
     public void run() {
             JFrame frame = new JFrame("Random Generator Generator");
+            frame.getContentPane().setBackground(new Color(235, 94, 40));
+            frame.setIconImage(icon.getImage());
             frame.setDefaultLookAndFeelDecorated(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(500, 500);
@@ -62,27 +67,63 @@ public class GUI implements Runnable {
         setsChoosingPanel.add(setsName);
         setsChoosingPanel.add(choseSet);
         contentPanel.add(setsChoosingPanel);
+        scroller.add(setsList);
         contentPanel.add(setsList);
 
         tabs.addTab("Generating", generatingPan);
         tabs.addTab("Saving", savingPanel);
         tabs.addTab("Content", contentPanel);
+        tabs.setBackgroundAt(0, new Color(224,131,0));
+        tabs.setBackgroundAt(1, new Color(204,119,0));
+        tabs.setBackgroundAt(2, new Color(184,107,0));
+        tabs.setForeground(Color.BLACK);
         frame.add(tabs);
 
         tagPanel.setLayout(new BorderLayout());
+        tagPanel.setBackground(new Color(231, 188, 13));
+        generateNumber.setBackground(new Color(224,131,0));
+        generateNumber.setForeground(Color.BLACK);
         tagPanel.add(generateNumber, BorderLayout.SOUTH);
+        generatingPan.add(iconLabel);
         generatingPan.add(tagPanel);
         moreTagsPanel.setLayout(new FlowLayout());
+        firstTags.setBackground(new Color(224,131,0));
+        firstTags.setForeground(Color.BLACK);
         moreTagsPanel.add(firstTags);
+        secondTags.setBackground(new Color(224,131,0));
+        secondTags.setForeground(Color.BLACK);
         moreTagsPanel.add(secondTags);
+        thirdTags.setBackground(new Color(224,131,0));
+        thirdTags.setForeground(Color.BLACK);
         moreTagsPanel.add(thirdTags);
+        fourthTags.setBackground(new Color(224,131,0));
+        fourthTags.setForeground(Color.BLACK);
         moreTagsPanel.add(fourthTags);
+        moreTagsPanel.setBackground(new Color(231, 188, 13));
         tagPanel.add(moreTagsPanel, BorderLayout.CENTER);
-        generatingPan.add(quantityToGenerate);
-        generatingPan.add(saveSet);
+        iconLabel.setIcon(icon);
+        generatedNamesPanel.setLayout(new BorderLayout());
+        generatedNamesPanel.setBackground(new Color(231, 188, 13));
+        JPanel quantityPanel = new JPanel();
+        quantityPanel.setBackground(new Color(231, 188, 13));
+        quantityToGenerate.setHorizontalAlignment(JTextField.CENTER);
+        quantityToGenerate.setBackground(new Color(224,131,0));
+        quantityToGenerate.setForeground(Color.BLACK);
+        quantityPanel.add(quantityToGenerate);
+        generatedNamesPanel.add(quantityPanel, BorderLayout.NORTH);
+        JPanel saveSetPanel = new JPanel();
+        saveSetPanel.setBackground(new Color(231, 188, 13));
+        saveSet.setBackground(new Color(224,131,0));
+        saveSet.setForeground(Color.BLACK);
+        saveSet.setVisible(false);
+        saveSetPanel.add(saveSet);
+        generatedNamesPanel.add(saveSetPanel, BorderLayout.WEST);
         generatedNames.setLayoutOrientation(JList.VERTICAL);
         generatedNames.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        generatingPan.add(generatedNames);
+        generatedNames.setVisible(false);
+        generatedNamesPanel.add(generatedNames, BorderLayout.CENTER);
+        generatingPan.add(generatedNamesPanel);
+        generatingPan.setBackground(new Color(231, 188, 13));
 
         savingPanel.add(saveButton);
         savingPanel.add(tagButton);

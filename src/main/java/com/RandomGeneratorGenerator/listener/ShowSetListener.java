@@ -4,11 +4,13 @@ import com.RandomGeneratorGenerator.GUI;
 import com.RandomGeneratorGenerator.repository.KitsContentRepository;
 import com.RandomGeneratorGenerator.repository.KitsNameRepository;
 import com.RandomGeneratorGenerator.repository.NameRepository;
+import org.springframework.aop.AopInvocationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -52,12 +54,12 @@ public class ShowSetListener implements ActionListener {
         }
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
-
+try {
         if (src == gui.getChoseSet()) {
+
             ArrayList<Long> setsNameIdValue;
             ArrayList<String> sets = new ArrayList<>();
 
@@ -68,7 +70,12 @@ public class ShowSetListener implements ActionListener {
             for (Long set : setsNameIdValue) {
                 sets.add(nameRepository.getNamesById(set));
             }
+
             gui.getSetsList().setListData(sets.toArray());
         }
+} catch (AopInvocationException exception) {
+    JOptionPane.showMessageDialog(new JFrame("Warning!"),
+            "Choose at least one set!");
+}
     }
 }
