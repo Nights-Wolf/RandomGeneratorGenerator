@@ -9,6 +9,7 @@ import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -39,18 +40,22 @@ public class RandomListener implements ActionListener {
         Object src = e.getSource();
         if (src == gui.getGenerateNumber()) {
             ArrayList<String> names = new ArrayList<>();
+            DefaultListModel model = new DefaultListModel();
 
             for (Long i : randomGenerator.generateNumber()) {
                 names.add(nameRepository.getNamesById(i));
             }
-            gui.getGeneratedNames().setListData(names.toArray());
+            model.addAll(names);
+            gui.getGeneratedNames().setModel(model);
 
             if (names.size() != 0) {
                 gui.getGeneratedNames().setVisible(true);
                 gui.getSaveSet().setVisible(true);
+                gui.getRemoveGeneratedName().setVisible(true);
             } else {
                 gui.getGeneratedNames().setVisible(false);
                 gui.getSaveSet().setVisible(false);
+                gui.getRemoveGeneratedName().setVisible(false);
             }
         }
     }

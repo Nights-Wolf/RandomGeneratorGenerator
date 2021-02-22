@@ -44,51 +44,56 @@ public class SaveSetListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         ArrayList<Long> kit = new ArrayList<>();
 
-        try {
-            String s = JOptionPane.showInputDialog(
-                    new JFrame(),
-                    "Set name: ",
-                    "Save set",
-                    JOptionPane.PLAIN_MESSAGE);
+        if (gui.getGeneratedNames().getModel().getSize() <= 0) {
+            JOptionPane.showMessageDialog(new JFrame(), "Empty set!");
+        } else {
 
-        while (s.length() <= 0) {
-            JOptionPane.showMessageDialog(new JFrame(), "Empty name!");
-            s = JOptionPane.showInputDialog(
-                    new JFrame(),
-                    "Set name: ",
-                    "Save set",
-                    JOptionPane.PLAIN_MESSAGE);
-            continue;
-        }
+            try {
+                String s = JOptionPane.showInputDialog(
+                        new JFrame(),
+                        "Set name: ",
+                        "Save set",
+                        JOptionPane.PLAIN_MESSAGE);
 
-        if (s != null && s.length() > 0) {
-            KitsName kitsName = new KitsName();
-            kitsName.setKitsName_name(s);
-            saveSet.saveKitsName(kitsName);
-
-            for (int i = 0; i < gui.getGeneratedNames().getModel().getSize(); i++) {
-                kit.add(nameRepository.getNameIdByName(String.valueOf(gui.getGeneratedNames().getModel().getElementAt(i))));
-            }
-
-            for (Long aLong : kit) {
-                try {
-                    long kitsNameId = kitsNameRepository.getKitsNameIdByName(s);
-                    KitsContent kitsContent = new KitsContent();
-                    kitsContent.setKitsName_id(kitsNameId);
-                    kitsContent.setName_id(aLong);
-                    saveSet.saveKitsContent(kitsContent);
-                } catch (IncorrectResultSizeDataAccessException exception) {
-                        JOptionPane.showConfirmDialog(new JFrame(), "Set already exists!", "Warning!", JOptionPane.WARNING_MESSAGE, JOptionPane.CLOSED_OPTION);
-                        int yesOption = JOptionPane.CLOSED_OPTION;
-                        if (yesOption != 0) {
-                            break;
-                        }
+                while (s.length() <= 0) {
+                    JOptionPane.showMessageDialog(new JFrame(), "Empty name!");
+                    s = JOptionPane.showInputDialog(
+                            new JFrame(),
+                            "Set name: ",
+                            "Save set",
+                            JOptionPane.PLAIN_MESSAGE);
+                    continue;
                 }
+
+                if (s != null && s.length() > 0) {
+                    KitsName kitsName = new KitsName();
+                    kitsName.setKitsName_name(s);
+                    saveSet.saveKitsName(kitsName);
+
+                    for (int i = 0; i < gui.getGeneratedNames().getModel().getSize(); i++) {
+                        kit.add(nameRepository.getNameIdByName(String.valueOf(gui.getGeneratedNames().getModel().getElementAt(i))));
+                    }
+
+                    for (Long aLong : kit) {
+                        try {
+                            long kitsNameId = kitsNameRepository.getKitsNameIdByName(s);
+                            KitsContent kitsContent = new KitsContent();
+                            kitsContent.setKitsName_id(kitsNameId);
+                            kitsContent.setName_id(aLong);
+                            saveSet.saveKitsContent(kitsContent);
+                        } catch (IncorrectResultSizeDataAccessException exception) {
+                            JOptionPane.showConfirmDialog(new JFrame(), "Set already exists!", "Warning!", JOptionPane.WARNING_MESSAGE, JOptionPane.CLOSED_OPTION);
+                            int yesOption = JOptionPane.CLOSED_OPTION;
+                            if (yesOption != 0) {
+                                break;
+                            }
+                        }
+                    }
+                    gui.getSetsName().removeAllItems();
+                    showSetListener.addSetsToComboBox();
+                }
+            } catch (NullPointerException exception) {
             }
-            gui.getSetsName().removeAllItems();
-            showSetListener.addSetsToComboBox();
-        }
-        } catch (NullPointerException exception) {
         }
     }
 }

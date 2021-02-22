@@ -31,6 +31,7 @@ public class RandomGenerator {
         ArrayList<Long> secondTagNamesValue = new ArrayList<>();
         ArrayList<Long> thirdTagNamesValue = new ArrayList<>();
         ArrayList<Long> fourthTagNamesValue = new ArrayList<>();
+        int generatedNamesQuantity = 0;
 
         String selectedTagFirst = String.valueOf(gui.getFirstTags().getSelectedItem());
         try {
@@ -102,10 +103,17 @@ try {
                 Collections.shuffle(namesFromDb);
             }
         }
+try {
+    if (Integer.parseInt(gui.getQuantityToGenerate().getText()) < 0) {
+        JOptionPane.showMessageDialog(new JFrame(), "Incorrect number to generate!");
+    } else {
+        generatedNamesQuantity = Integer.parseInt(gui.getQuantityToGenerate().getText());
+    }
+}catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(new JFrame(), "Incorrect number to generate!");
+}
+    long[] chosenNames = new long[generatedNamesQuantity];
 
-       int generatedNamesQuantity = Integer.parseInt(gui.getQuantityToGenerate().getText());
-
-            long[] chosenNames = new long[generatedNamesQuantity];
 try {
 
     for (int i = 0; i < chosenNames.length; ++i) {
