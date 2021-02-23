@@ -8,7 +8,9 @@ import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 
 @Service
 public class SaveTag {
@@ -30,12 +32,14 @@ public class SaveTag {
     public void addTagsToBox() {
         String none = "-None-";
         ArrayList<String> tagsFromDb = new ArrayList<>();
-        long tagIdCount = tagRepository.count();
+        ArrayList<Long> tagIdCount = tagRepository.getTagsId();
 
-        for (long i = 1; i <= tagIdCount; i++) {
+        for (Long i : tagIdCount) {
             String myTags = tagRepository.getTagsNames(i);
             tagsFromDb.add(myTags);
         }
+
+        tagsFromDb.removeAll(Collections.singleton(null));
 
         gui.getFirstTags().addItem(none);
         gui.getSecondTags().addItem(none);

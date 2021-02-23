@@ -26,6 +26,8 @@ public class GUI implements Runnable {
     private final JPanel moreTagsPanel = new JPanel();
     private final JButton saveSet = new JButton("Save set");
     private final JButton removeGeneratedName = new JButton("Remove");
+    private final JButton removeSet = new JButton("Remove");
+    private final JButton clearWholeSet = new JButton("Remove set");
     private final JPanel generatedNamesPanel = new JPanel();
     private final JTextField quantityToGenerate = new JTextField("10", 3);
     private final JPanel generatingPan = new JPanel();
@@ -63,13 +65,18 @@ public class GUI implements Runnable {
 
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new FlowLayout());
+        contentPanel.setBackground(new Color(231, 188, 13));
         frame.add(contentPanel);
         setsChoosingPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         setsChoosingPanel.add(setsName);
         setsChoosingPanel.add(choseSet);
+        setsChoosingPanel.add(clearWholeSet);
+        setsChoosingPanel.setBackground(new Color(231, 188, 13));
         contentPanel.add(setsChoosingPanel);
         scroller.add(setsList);
         contentPanel.add(setsList);
+        removeSet.setVisible(false);
+        contentPanel.add(removeSet);
 
         tabs.addTab("Generating", generatingPan);
         tabs.addTab("Saving", savingPanel);

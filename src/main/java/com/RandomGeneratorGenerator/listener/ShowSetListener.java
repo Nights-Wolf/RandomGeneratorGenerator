@@ -1,6 +1,7 @@
 package com.RandomGeneratorGenerator.listener;
 
 import com.RandomGeneratorGenerator.GUI;
+import com.RandomGeneratorGenerator.model.KitsName;
 import com.RandomGeneratorGenerator.repository.KitsContentRepository;
 import com.RandomGeneratorGenerator.repository.KitsNameRepository;
 import com.RandomGeneratorGenerator.repository.NameRepository;
@@ -14,6 +15,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Component
 public class ShowSetListener implements ActionListener {
@@ -40,12 +43,13 @@ public class ShowSetListener implements ActionListener {
     public void addSetsToComboBox() {
         String none = "-None-";
         ArrayList<String> setsFromDb = new ArrayList<>();
-        long setsIdCount = kitsNameRepository.count();
+        ArrayList<Long> setsIdCount = kitsNameRepository.getKitsNameId();
 
-        for (long i = 1; i <= setsIdCount; i++) {
+        for (Long i : setsIdCount) {
             String mySets = kitsNameRepository.getKitsNames(i);
             setsFromDb.add(mySets);
-        }
+            }
+        setsFromDb.removeAll(Collections.singleton(null));
 
         gui.getSetsName().addItem(none);
 
@@ -70,8 +74,9 @@ try {
             for (Long set : setsNameIdValue) {
                 sets.add(nameRepository.getNamesById(set));
             }
-
-            gui.getSetsList().setListData(sets.toArray());
+            DefaultListModel model = new DefaultListModel();
+            model.addAll(sets);
+            gui.getSetsList().setModel(model);
         }
 } catch (AopInvocationException exception) {
     JOptionPane.showMessageDialog(new JFrame("Warning!"),
