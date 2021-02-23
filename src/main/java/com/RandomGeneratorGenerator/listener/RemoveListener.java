@@ -57,6 +57,8 @@ public class RemoveListener implements ActionListener {
         long setId = kitsNameRepository.getKitsNameIdByName(String.valueOf(gui.getSetsName().getSelectedItem()));
         kitsContentRepository.removeWholeSet(setId);
         kitsNameRepository.removeSetName(setId);
+        DefaultListModel<ListModel> model = (DefaultListModel<ListModel>) gui.getSetsList().getModel();
+        model.removeAllElements();
         gui.getSetsName().removeAllItems();
         showSetListener.addSetsToComboBox();
     }
