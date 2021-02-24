@@ -24,13 +24,15 @@ public class SaveSetListener implements ActionListener {
     private final SaveSet saveSet;
     private final KitsNameRepository kitsNameRepository;
     private final NameRepository nameRepository;
+    private final ShowSetListener showSetListener;
 
     @Autowired
-    public SaveSetListener(GUI gui, SaveSet saveSet, KitsNameRepository kitsNameRepository, NameRepository nameRepository) {
+    public SaveSetListener(GUI gui, SaveSet saveSet, KitsNameRepository kitsNameRepository, NameRepository nameRepository, ShowSetListener showSetListener) {
         this.gui = gui;
         this.saveSet = saveSet;
         this.kitsNameRepository = kitsNameRepository;
         this.nameRepository = nameRepository;
+        this.showSetListener = showSetListener;
     }
 
     @EventListener(ApplicationStartedEvent.class)
@@ -83,6 +85,8 @@ public class SaveSetListener implements ActionListener {
                         }
                 }
             }
+            gui.getSetsName().removeAllItems();
+            showSetListener.addSetsToComboBox();
         }
         } catch (NullPointerException exception) {
         }

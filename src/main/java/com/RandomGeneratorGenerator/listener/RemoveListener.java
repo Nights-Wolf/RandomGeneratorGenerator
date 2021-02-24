@@ -4,6 +4,7 @@ import com.RandomGeneratorGenerator.GUI;
 import com.RandomGeneratorGenerator.repository.KitsContentRepository;
 import com.RandomGeneratorGenerator.repository.KitsNameRepository;
 import com.RandomGeneratorGenerator.repository.NameRepository;
+import org.springframework.aop.AopInvocationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
@@ -66,12 +67,17 @@ public class RemoveListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
-        if (src == gui.getRemoveGeneratedName()) {
-            removeNameFromList();
-        } else if (src == gui.getRemoveSet()) {
-            removeSetFromList();
-        } else if (src == gui.getClearWholeSet()) {
-            clearWholeSet();
+        try {
+            if (src == gui.getRemoveGeneratedName()) {
+                removeNameFromList();
+            } else if (src == gui.getRemoveSet()) {
+                removeSetFromList();
+            } else if (src == gui.getClearWholeSet()) {
+                clearWholeSet();
+            }
+        } catch (AopInvocationException exception) {
+            JOptionPane.showMessageDialog(new JFrame("Warning!"),
+                    "Choose at least one set!");
         }
     }
 }

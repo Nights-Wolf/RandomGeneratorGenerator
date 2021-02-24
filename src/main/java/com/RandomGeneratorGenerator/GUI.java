@@ -3,15 +3,22 @@ package com.RandomGeneratorGenerator;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 @Component
 @Getter
 public class GUI implements Runnable {
 
-    private final ImageIcon icon = new ImageIcon("src/main/resources/logo2Bigger.png");
+
+    private BufferedImage image;
+    private BufferedImage imageOnContent;
     private final JLabel iconLabel = new JLabel();
+    private final JLabel iconLabelOnContent = new JLabel();
     private final JButton saveButton = new JButton("Save name");
     private final JButton tagButton = new JButton("Save tag");
     private final JButton contentButton = new JButton("Save content");
@@ -29,7 +36,7 @@ public class GUI implements Runnable {
     private final JButton removeSet = new JButton("Remove");
     private final JButton clearWholeSet = new JButton("Remove set");
     private final JPanel generatedNamesPanel = new JPanel();
-    private final JTextField quantityToGenerate = new JTextField("10", 3);
+    private final JTextField quantityToGenerate = new JTextField("10", 2);
     private final JPanel generatingPan = new JPanel();
     private final JScrollPane scroller = new JScrollPane();
     private final JPanel setsChoosingPanel = new JPanel();
@@ -48,15 +55,32 @@ public class GUI implements Runnable {
 
     @Override
     public void run() {
+        try {
+            File file = new File("images/logo.png");
+            this.image = ImageIO.read(file);
+        } catch(IOException exception) {
+            exception.printStackTrace();
+        }
+
+        try {
+            File file = new File("images/logo2Bigger.png");
+            this.imageOnContent = ImageIO.read(file);
+        } catch(IOException exception) {
+            exception.printStackTrace();
+        }
+
             JFrame frame = new JFrame("Random Generator Generator");
             frame.getContentPane().setBackground(new Color(235, 94, 40));
-            frame.setIconImage(icon.getImage());
+            frame.setLocationByPlatform(true);
+            frame.setIconImage(new ImageIcon(image).getImage());
             frame.setDefaultLookAndFeelDecorated(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(500, 500);
             frame.setVisible(true);
 
+
         generatingPan.setLayout(new FlowLayout(FlowLayout.CENTER));
+        generatingPan.setBackground(new Color(231, 188, 13));
         frame.add(generatingPan);
 
         JPanel savingPanel = new JPanel();
@@ -64,19 +88,10 @@ public class GUI implements Runnable {
         frame.add(savingPanel);
 
         JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new FlowLayout());
+        contentPanel.setLayout(new BorderLayout());
         contentPanel.setBackground(new Color(231, 188, 13));
         frame.add(contentPanel);
-        setsChoosingPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        setsChoosingPanel.add(setsName);
-        setsChoosingPanel.add(choseSet);
-        setsChoosingPanel.add(clearWholeSet);
-        setsChoosingPanel.setBackground(new Color(231, 188, 13));
-        contentPanel.add(setsChoosingPanel);
-        scroller.add(setsList);
-        contentPanel.add(setsList);
-        removeSet.setVisible(false);
-        contentPanel.add(removeSet);
+
 
         tabs.addTab("Generating", generatingPan);
         tabs.addTab("Saving", savingPanel);
@@ -92,9 +107,10 @@ public class GUI implements Runnable {
         generateNumber.setBackground(new Color(224,131,0));
         generateNumber.setForeground(Color.BLACK);
         tagPanel.add(generateNumber, BorderLayout.SOUTH);
+        iconLabel.setIcon(new ImageIcon(imageOnContent));
         generatingPan.add(iconLabel);
         generatingPan.add(tagPanel);
-        moreTagsPanel.setLayout(new FlowLayout());
+        moreTagsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         firstTags.setBackground(new Color(224,131,0));
         firstTags.setForeground(Color.BLACK);
         moreTagsPanel.add(firstTags);
@@ -109,7 +125,6 @@ public class GUI implements Runnable {
         moreTagsPanel.add(fourthTags);
         moreTagsPanel.setBackground(new Color(231, 188, 13));
         tagPanel.add(moreTagsPanel, BorderLayout.CENTER);
-        iconLabel.setIcon(icon);
         generatedNamesPanel.setLayout(new BorderLayout());
         generatedNamesPanel.setBackground(new Color(231, 188, 13));
         JPanel quantityPanel = new JPanel();
@@ -142,10 +157,37 @@ public class GUI implements Runnable {
         generatedNames.setForeground(Color.BLACK);
         generatedNamesPanel.add(generatedNames, BorderLayout.CENTER);
         generatingPan.add(generatedNamesPanel);
-        generatingPan.setBackground(new Color(231, 188, 13));
 
         savingPanel.add(saveButton);
         savingPanel.add(tagButton);
         savingPanel.add(contentButton);
+        savingPanel.add(new JLabel("WORK IN PROGRESS!"));
+
+        setsChoosingPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JPanel listPanel = new JPanel();
+        listPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        listPanel.setBackground(new Color(231, 188, 13));
+        setsName.setBackground(new Color(224,131,0));
+        setsName.setForeground(Color.BLACK);
+        iconLabelOnContent.setIcon(new ImageIcon(image));
+        setsChoosingPanel.add(iconLabelOnContent);
+        setsChoosingPanel.add(setsName);
+        choseSet.setBackground(new Color(224,131,0));
+        choseSet.setForeground(Color.BLACK);
+        setsChoosingPanel.add(choseSet);
+        clearWholeSet.setBackground(new Color(224,131,0));
+        clearWholeSet.setForeground(Color.BLACK);
+        setsChoosingPanel.add(clearWholeSet);
+        setsChoosingPanel.setBackground(new Color(231, 188, 13));
+        contentPanel.add(setsChoosingPanel, BorderLayout.NORTH);
+        setsList.setBackground(new Color(224,131,0));
+        setsList.setForeground(Color.BLACK);
+        scroller.add(setsList);
+        listPanel.add(setsList);
+        removeSet.setVisible(false);
+        removeSet.setBackground(new Color(224,131,0));
+        removeSet.setForeground(Color.BLACK);
+        listPanel.add(removeSet);
+        contentPanel.add(listPanel, BorderLayout.CENTER);
     }
 }
