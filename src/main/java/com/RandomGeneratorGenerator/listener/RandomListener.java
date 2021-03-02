@@ -51,11 +51,13 @@ public class RandomListener implements ActionListener {
             if (names.size() != 0) {
                 gui.getGeneratedNames().setVisible(true);
                 gui.getSaveSet().setVisible(true);
-              //  gui.getRemoveGeneratedName().setVisible(true);
+                gui.getScroller().setVisible(true);
+
             } else {
                 gui.getGeneratedNames().setVisible(false);
                 gui.getSaveSet().setVisible(false);
-               // gui.getRemoveGeneratedName().setVisible(false);
+                gui.getScroller().setVisible(false);
+
             }
         }
     }

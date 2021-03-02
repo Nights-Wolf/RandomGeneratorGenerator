@@ -1,6 +1,7 @@
 package com.RandomGeneratorGenerator;
 
 import lombok.Getter;
+import org.springframework.data.geo.Box;
 import org.springframework.stereotype.Component;
 
 import javax.imageio.ImageIO;
@@ -19,9 +20,7 @@ public class GUI implements Runnable {
     private BufferedImage imageOnContent;
     private final JLabel iconLabel = new JLabel();
     private final JLabel iconLabelOnContent = new JLabel();
-    private final JButton saveButton = new JButton("Save name");
-    private final JButton tagButton = new JButton("Save tag");
-    private final JButton contentButton = new JButton("Save content");
+    //Generating Tab
     private final JButton generateNumber = new JButton("Generate Name!");
     private final JList generatedNames = new JList();
     private final JPanel tagPanel = new JPanel();
@@ -38,7 +37,12 @@ public class GUI implements Runnable {
     private final JPanel generatedNamesPanel = new JPanel();
     private final JTextField quantityToGenerate = new JTextField("10", 2);
     private final JPanel generatingPan = new JPanel();
-    private final JScrollPane scroller = new JScrollPane();
+    private final JScrollPane scroller = new JScrollPane(generatedNames, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+    //Saving Tab
+    private final JButton saveButton = new JButton("Save name");
+    private final JButton tagButton = new JButton("Save tag");
+    private final JButton contentButton = new JButton("Save content");
+    //Content Tab
     private final JPanel setsChoosingPanel = new JPanel();
     private final JComboBox<String> setsName = new JComboBox<>();
     private final JButton choseSet = new JButton("Show set");
@@ -79,7 +83,7 @@ public class GUI implements Runnable {
             frame.setVisible(true);
 
 
-        generatingPan.setLayout(new FlowLayout(FlowLayout.CENTER));
+        generatingPan.setLayout(new BorderLayout());
         generatingPan.setBackground(new Color(231, 188, 13));
         frame.add(generatingPan);
 
@@ -104,12 +108,20 @@ public class GUI implements Runnable {
 
         tagPanel.setLayout(new BorderLayout());
         tagPanel.setBackground(new Color(231, 188, 13));
+        JPanel generateNumberButtonPane = new JPanel();
+        generateNumberButtonPane.setBackground(new Color(231, 188, 13));
+        generateNumberButtonPane.setLayout(new FlowLayout(FlowLayout.CENTER));
         generateNumber.setBackground(new Color(224,131,0));
         generateNumber.setForeground(Color.BLACK);
-        tagPanel.add(generateNumber, BorderLayout.SOUTH);
+        generateNumberButtonPane.add(generateNumber);
+        tagPanel.add(generateNumberButtonPane, BorderLayout.SOUTH);
         iconLabel.setIcon(new ImageIcon(imageOnContent));
-        generatingPan.add(iconLabel);
-        generatingPan.add(tagPanel);
+        JPanel iconPane = new JPanel();
+        iconPane.setLayout(new FlowLayout(FlowLayout.CENTER));
+        iconPane.setBackground(new Color(231, 188, 13));
+        iconPane.add(iconLabel);
+        tagPanel.add(iconPane, BorderLayout.NORTH);
+        generatingPan.add(tagPanel, BorderLayout.NORTH);
         moreTagsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         firstTags.setBackground(new Color(224,131,0));
         firstTags.setForeground(Color.BLACK);
@@ -141,7 +153,6 @@ public class GUI implements Runnable {
         saveSet.setForeground(Color.BLACK);
         saveSet.setVisible(false);
         saveSetPanel.add(saveSet);
-        generatedNamesPanel.add(saveSetPanel, BorderLayout.WEST);
         JPanel removeNamePanel = new JPanel();
         removeNamePanel.setLayout(new FlowLayout());
         removeNamePanel.setBackground(new Color(231, 188, 13));
@@ -149,14 +160,20 @@ public class GUI implements Runnable {
         removeGeneratedName.setForeground(Color.BLACK);
         removeGeneratedName.setVisible(false);
         removeNamePanel.add(removeGeneratedName);
-        generatedNamesPanel.add(removeNamePanel, BorderLayout.EAST);
         generatedNames.setLayoutOrientation(JList.VERTICAL);
         generatedNames.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         generatedNames.setVisible(false);
         generatedNames.setBackground(new Color(224,131,0));
         generatedNames.setForeground(Color.BLACK);
-        generatedNamesPanel.add(generatedNames, BorderLayout.CENTER);
-        generatingPan.add(generatedNamesPanel);
+        scroller.setVisible(false);
+        JPanel listPane = new JPanel();
+        listPane.setLayout(new GridLayout());
+        listPane.setBackground(new Color(231, 188, 13));
+        listPane.add(saveSetPanel);
+        listPane.add(scroller);
+        listPane.add(removeNamePanel);
+        generatedNamesPanel.add(listPane, BorderLayout.CENTER);
+        generatingPan.add(generatedNamesPanel, BorderLayout.CENTER);
 
         savingPanel.add(saveButton);
         savingPanel.add(tagButton);
@@ -182,7 +199,6 @@ public class GUI implements Runnable {
         contentPanel.add(setsChoosingPanel, BorderLayout.NORTH);
         setsList.setBackground(new Color(224,131,0));
         setsList.setForeground(Color.BLACK);
-        scroller.add(setsList);
         listPanel.add(setsList);
         removeSet.setVisible(false);
         removeSet.setBackground(new Color(224,131,0));
