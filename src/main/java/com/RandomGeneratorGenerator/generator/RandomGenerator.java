@@ -50,6 +50,9 @@ public class RandomGenerator {
                     } catch (AopInvocationException f) {
                     }
                 }
+                if (secondTagNamesValue.size() <= 0) {
+                    JOptionPane.showMessageDialog(new JFrame(), "No results in second selected tag \"" + selectedTagSecond + "\"");
+                }
             }
         }catch (AopInvocationException e) {
         }
@@ -63,6 +66,9 @@ try {
                 thirdTagNamesValue.add(contentRepository.filterName(thirdTagIdValue, tag));
             }catch (AopInvocationException f){}
         }
+        if (thirdTagNamesValue.size() <= 0) {
+            JOptionPane.showMessageDialog(new JFrame(), "No results in third selected tag \"" + selectedTagThird + "\"");
+        }
     }
         } catch (AopInvocationException e) {
         }
@@ -75,6 +81,9 @@ try {
                 fourthTagNamesValue.add(contentRepository.filterName(fourthTagIdValue, tag));
             } catch (AopInvocationException f) {
             }
+        }
+        if (fourthTagNamesValue.size() <= 0) {
+            JOptionPane.showMessageDialog(new JFrame(), "No results in fourth selected tag \"" + selectedTagFourth + "\"");
         }
     }
         } catch (AopInvocationException e) {
@@ -127,7 +136,7 @@ try {
     }
 }catch (IndexOutOfBoundsException e) {
     JOptionPane.showMessageDialog(new JFrame("Warning!"),
-            "Choose at least one tag!");
+            "Choose first tag!");
 }
             return chosenNames;
         }
