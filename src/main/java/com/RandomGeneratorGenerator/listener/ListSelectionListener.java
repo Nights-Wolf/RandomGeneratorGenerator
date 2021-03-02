@@ -27,7 +27,25 @@ public class ListSelectionListener implements javax.swing.event.ListSelectionLis
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-      int selectedIndex = gui.getGeneratedNames().getSelectedIndex();
+        Object src = e.getSource();
+        if (src == gui.getGeneratedNames()) {
+            int selectedIndex = gui.getGeneratedNames().getSelectedIndex();
+            if (gui.getGeneratedNames().isSelectedIndex(selectedIndex)) {
+                gui.getRemoveGeneratedName().setVisible(true);
+            } else {
+                gui.getRemoveGeneratedName().setVisible(false);
+            }
+        }
+            if (src == gui.getSetsList()) {
+                int selectedSetIndex = gui.getSetsList().getSelectedIndex();
+                if (gui.getSetsList().isSelectedIndex(selectedSetIndex)) {
+                    gui.getRemoveSet().setVisible(true);
+                } else {
+                    gui.getRemoveSet().setVisible(false);
+                }
+            }
+
+      /*int selectedIndex = gui.getGeneratedNames().getSelectedIndex();
       int selectedSetIndex = gui.getSetsList().getSelectedIndex();
 if (gui.getGeneratedNames().isSelectedIndex(selectedIndex)) {
     gui.getRemoveGeneratedName().setVisible(true);
@@ -35,8 +53,7 @@ if (gui.getGeneratedNames().isSelectedIndex(selectedIndex)) {
     gui.getRemoveSet().setVisible(true);
 } else {
     gui.getRemoveGeneratedName().setVisible(false);
-    gui.getRemoveSet().setVisible(false);
-}
+    gui.getRemoveSet().setVisible(false); */
 
 
 
