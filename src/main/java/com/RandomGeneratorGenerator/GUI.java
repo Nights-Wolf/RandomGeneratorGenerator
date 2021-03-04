@@ -1,7 +1,6 @@
 package com.RandomGeneratorGenerator;
 
 import lombok.Getter;
-import org.springframework.data.geo.Box;
 import org.springframework.stereotype.Component;
 
 import javax.imageio.ImageIO;
@@ -48,13 +47,11 @@ public class GUI implements Runnable {
     private final JButton choseSet = new JButton("Show set");
     private final JList setsList = new JList();
 
-    private Thread runner = null;
+    private final Thread runner;
 
     public GUI() {
-        if (runner == null) {
-            runner = new Thread(this);
-            runner.start();
-        }
+        runner = new Thread(this);
+        runner.start();
     }
 
     @Override
@@ -77,7 +74,7 @@ public class GUI implements Runnable {
             frame.getContentPane().setBackground(new Color(235, 94, 40));
             frame.setLocationByPlatform(true);
             frame.setIconImage(new ImageIcon(image).getImage());
-            frame.setDefaultLookAndFeelDecorated(true);
+            JFrame.setDefaultLookAndFeelDecorated(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(500, 500);
             frame.setVisible(true);
@@ -89,6 +86,7 @@ public class GUI implements Runnable {
 
         JPanel savingPanel = new JPanel();
         savingPanel.setLayout(new FlowLayout());
+        savingPanel.setBackground(new Color(231, 188, 13));
         frame.add(savingPanel);
 
         JPanel contentPanel = new JPanel();
@@ -98,8 +96,8 @@ public class GUI implements Runnable {
 
 
         tabs.addTab("Generating", generatingPan);
-        tabs.addTab("Saving", savingPanel);
-        tabs.addTab("Content", contentPanel);
+        tabs.addTab("Database & Saving", savingPanel);
+        tabs.addTab("Sets", contentPanel);
         tabs.setBackgroundAt(0, new Color(224,131,0));
         tabs.setBackgroundAt(1, new Color(204,119,0));
         tabs.setBackgroundAt(2, new Color(184,107,0));
