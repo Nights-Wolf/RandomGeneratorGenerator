@@ -15,10 +15,12 @@ import java.io.IOException;
 public class GUI implements Runnable {
 
 
+    //Frame
     private BufferedImage image;
     private BufferedImage imageOnContent;
     private final JLabel iconLabel = new JLabel();
     private final JLabel iconLabelOnContent = new JLabel();
+    private final JTabbedPane tabs = new JTabbedPane();
     //Generating Tab
     private final JButton generateNumber = new JButton("Generate Name!");
     private final JList generatedNames = new JList();
@@ -27,12 +29,11 @@ public class GUI implements Runnable {
     private final JComboBox<String> secondTags = new JComboBox<>();
     private final JComboBox<String> thirdTags = new JComboBox<>();
     private final JComboBox<String> fourthTags = new JComboBox<>();
-    private final JTabbedPane tabs = new JTabbedPane();
     private final JPanel moreTagsPanel = new JPanel();
     private final JButton saveSet = new JButton("Save set");
     private final JButton removeGeneratedName = new JButton("Remove");
-    private final JButton removeSet = new JButton("Remove");
-    private final JButton clearWholeSet = new JButton("Remove set");
+    private final JButton usedTagsButton = new JButton("Used");
+    private final JButton addToUsedTags = new JButton("Mark as used");
     private final JPanel generatedNamesPanel = new JPanel();
     private final JTextField quantityToGenerate = new JTextField("10", 2);
     private final JPanel generatingPan = new JPanel();
@@ -44,6 +45,8 @@ public class GUI implements Runnable {
     //Content Tab
     private final JPanel setsChoosingPanel = new JPanel();
     private final JComboBox<String> setsName = new JComboBox<>();
+    private final JButton clearWholeSet = new JButton("Remove set");
+    private final JButton removeSet = new JButton("Remove");
     private final JButton choseSet = new JButton("Show set");
     private final JList setsList = new JList();
 
@@ -157,6 +160,14 @@ public class GUI implements Runnable {
         removeGeneratedName.setBackground(new Color(224,131,0));
         removeGeneratedName.setForeground(Color.BLACK);
         removeGeneratedName.setVisible(false);
+        usedTagsButton.setBackground(new Color(224,131,0));
+        usedTagsButton.setForeground(Color.BLACK);
+        usedTagsButton.setVisible(false);
+        addToUsedTags.setBackground(new Color(224,131,0));
+        addToUsedTags.setForeground(Color.BLACK);
+        addToUsedTags.setVisible(false);
+        removeNamePanel.add(usedTagsButton);
+        removeNamePanel.add(addToUsedTags);
         removeNamePanel.add(removeGeneratedName);
         generatedNames.setLayoutOrientation(JList.VERTICAL);
         generatedNames.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);

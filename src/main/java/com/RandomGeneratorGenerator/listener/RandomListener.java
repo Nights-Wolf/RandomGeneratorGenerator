@@ -52,11 +52,13 @@ public class RandomListener implements ActionListener {
                 gui.getGeneratedNames().setVisible(true);
                 gui.getSaveSet().setVisible(true);
                 gui.getScroller().setVisible(true);
+                gui.getUsedTagsButton().setVisible(true);
 
             } else {
                 gui.getGeneratedNames().setVisible(false);
                 gui.getSaveSet().setVisible(false);
                 gui.getScroller().setVisible(false);
+                gui.getUsedTagsButton().setVisible(false);
 
             }
         }

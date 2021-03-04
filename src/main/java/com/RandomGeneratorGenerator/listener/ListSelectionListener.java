@@ -32,8 +32,10 @@ public class ListSelectionListener implements javax.swing.event.ListSelectionLis
             int selectedIndex = gui.getGeneratedNames().getSelectedIndex();
             if (gui.getGeneratedNames().isSelectedIndex(selectedIndex)) {
                 gui.getRemoveGeneratedName().setVisible(true);
+                gui.getAddToUsedTags().setVisible(true);
             } else {
                 gui.getRemoveGeneratedName().setVisible(false);
+                gui.getAddToUsedTags().setVisible(false);
             }
         }
             if (src == gui.getSetsList()) {
