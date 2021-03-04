@@ -102,3 +102,9 @@ CONSTRAINT kitsContent_pk PRIMARY KEY (kitsContent_id),
 CONSTRAINT kitsContent_fk1 FOREIGN KEY (kitsName_id) REFERENCES KitsName(kitsName_id),
 CONSTRAINT kitsContent_fk2 FOREIGN KEY (name_id) REFERENCES Name(name_id)
 );
+
+CREATE TABLE Used (
+used_Tags_id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+used_Tags_name VARCHAR(50),
+CONSTRAINT used_pk PRIMARY KEY (used_Tags_id)
+);
