@@ -35,18 +35,24 @@ public class AddUsedTagListener implements ActionListener {
 
     public void tagThrash() {
         JFrame usedTagsFrame = new JFrame("Tags bin");
-        usedTagsFrame.setSize(100, 100);
+        usedTagsFrame.setSize(200, 200);
         usedTagsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         JFrame.setDefaultLookAndFeelDecorated(true);
         usedTagsFrame.setVisible(true);
         JPanel usedTagsPane = new JPanel();
         usedTagsPane.setLayout(new FlowLayout(FlowLayout.CENTER));
+        usedTagsPane.setBackground(new Color(231, 188, 13));
         usedTagsFrame.add(usedTagsPane);
         ArrayList<String> usedTags = usedRepository.getUsedTags();
         DefaultListModel model = new DefaultListModel();
         model.addAll(usedTags);
         JList usedTagsList = new JList(model);
-        usedTagsPane.add(usedTagsList);
+        usedTagsList.setVisibleRowCount(10);
+        usedTagsList.setBackground(new Color(224,131,0));
+        usedTagsList.setForeground(Color.BLACK);
+        JScrollPane scroller = new JScrollPane(usedTagsList, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        usedTagsPane.add(scroller);
 
     }
 
