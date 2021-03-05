@@ -162,7 +162,6 @@ public class GUI implements Runnable {
         removeGeneratedName.setVisible(false);
         usedTagsButton.setBackground(new Color(224,131,0));
         usedTagsButton.setForeground(Color.BLACK);
-        usedTagsButton.setVisible(false);
         addToUsedTags.setBackground(new Color(224,131,0));
         addToUsedTags.setForeground(Color.BLACK);
         addToUsedTags.setVisible(false);
