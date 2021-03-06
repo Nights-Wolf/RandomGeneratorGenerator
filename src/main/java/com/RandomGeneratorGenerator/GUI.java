@@ -32,7 +32,7 @@ public class GUI implements Runnable {
     private final JPanel moreTagsPanel = new JPanel();
     private final JButton saveSet = new JButton("Save set");
     private final JButton removeGeneratedName = new JButton("Remove");
-    private final JButton usedTagsButton = new JButton("Used");
+    private final JButton usedTagsButton = new JButton("Tag's bin");
     private final JButton addToUsedTags = new JButton("Mark as used");
     private final JPanel generatedNamesPanel = new JPanel();
     private final JTextField quantityToGenerate = new JTextField("10", 2);

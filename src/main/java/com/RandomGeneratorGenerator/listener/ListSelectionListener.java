@@ -12,16 +12,19 @@ import javax.swing.event.ListSelectionEvent;
 public class ListSelectionListener implements javax.swing.event.ListSelectionListener {
 
     private final GUI gui;
+    private final UsedTagListener usedTagListener;
 
     @Autowired
-    public ListSelectionListener(GUI gui) {
+    public ListSelectionListener(GUI gui, UsedTagListener usedTagListener) {
         this.gui = gui;
+        this.usedTagListener = usedTagListener;
     }
 
     @EventListener(ApplicationStartedEvent.class)
     public void addListener() {
         gui.getGeneratedNames().addListSelectionListener(this);
         gui.getSetsList().addListSelectionListener(this);
+        usedTagListener.getUsedTagsList().addListSelectionListener(this);
     }
 
 
@@ -46,18 +49,12 @@ public class ListSelectionListener implements javax.swing.event.ListSelectionLis
                     gui.getRemoveSet().setVisible(false);
                 }
             }
-
-      /*int selectedIndex = gui.getGeneratedNames().getSelectedIndex();
-      int selectedSetIndex = gui.getSetsList().getSelectedIndex();
-if (gui.getGeneratedNames().isSelectedIndex(selectedIndex)) {
-    gui.getRemoveGeneratedName().setVisible(true);
-}else if (gui.getSetsList().isSelectedIndex(selectedSetIndex)) {
-    gui.getRemoveSet().setVisible(true);
-} else {
-    gui.getRemoveGeneratedName().setVisible(false);
-    gui.getRemoveSet().setVisible(false); */
-
-
-
+            if (src == usedTagListener.getUsedTagsList()) {
+                int selectedTagIndex = usedTagListener.getUsedTagsList().getSelectedIndex();
+                if (usedTagListener.getUsedTagsList().isSelectedIndex(selectedTagIndex)) {
+                    usedTagListener.getRemoveFromBinButton().setVisible(true);
+                } else
+                    usedTagListener.getRemoveFromBinButton().setVisible(false);
+            }
 }
 }

@@ -4,6 +4,7 @@ import com.RandomGeneratorGenerator.GUI;
 import com.RandomGeneratorGenerator.model.Used;
 import com.RandomGeneratorGenerator.repository.UsedRepository;
 import com.RandomGeneratorGenerator.service.SaveUsed;
+import lombok.Getter;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -15,13 +16,17 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 @Component
-public class AddUsedTagListener implements ActionListener {
+@Getter
+public class UsedTagListener implements ActionListener {
 
     private final GUI gui;
     private final SaveUsed saveUsed;
     private final UsedRepository usedRepository;
+    private final JButton removeFromBinButton = new JButton("Remove");
+    private final JButton removeAllFromBinButton = new JButton("Remove all");
+    private final JList usedTagsList = new JList();
 
-    public AddUsedTagListener(GUI gui, SaveUsed saveUsed, UsedRepository usedRepository) {
+    public UsedTagListener(GUI gui, SaveUsed saveUsed, UsedRepository usedRepository) {
         this.gui = gui;
         this.saveUsed = saveUsed;
         this.usedRepository = usedRepository;
@@ -31,11 +36,13 @@ public class AddUsedTagListener implements ActionListener {
     public void addListener() {
         gui.getAddToUsedTags().addActionListener(this);
         gui.getUsedTagsButton().addActionListener(this);
+        removeAllFromBinButton.addActionListener(this);
+        removeFromBinButton.addActionListener(this);
     }
 
     public void tagThrash() {
         JFrame usedTagsFrame = new JFrame("Tags bin");
-        usedTagsFrame.setSize(200, 200);
+        usedTagsFrame.setSize(450, 250);
         usedTagsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         JFrame.setDefaultLookAndFeelDecorated(true);
         usedTagsFrame.setVisible(true);
@@ -46,14 +53,25 @@ public class AddUsedTagListener implements ActionListener {
         ArrayList<String> usedTags = usedRepository.getUsedTags();
         DefaultListModel model = new DefaultListModel();
         model.addAll(usedTags);
-        JList usedTagsList = new JList(model);
+        usedTagsList.setModel(model);
         usedTagsList.setVisibleRowCount(10);
         usedTagsList.setBackground(new Color(224,131,0));
         usedTagsList.setForeground(Color.BLACK);
         JScrollPane scroller = new JScrollPane(usedTagsList, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         usedTagsPane.add(scroller);
-
+        JPanel removeFromBinPane = new JPanel();
+        GridLayout gridLayout = new GridLayout(2, 1, 2, 10);
+        removeFromBinPane.setLayout(gridLayout);
+        removeFromBinPane.setBackground(new Color(231, 188, 13));
+        removeFromBinButton.setBackground(new Color(224,131,0));
+        removeFromBinButton.setForeground(Color.BLACK);
+        removeAllFromBinButton.setBackground(new Color(224,131,0));
+        removeAllFromBinButton.setForeground(Color.BLACK);
+        removeFromBinPane.add(removeAllFromBinButton);
+        removeFromBinPane.add(removeFromBinButton);
+        removeFromBinButton.setVisible(false);
+        usedTagsPane.add(removeFromBinPane);
     }
 
     @Override
@@ -69,6 +87,13 @@ public class AddUsedTagListener implements ActionListener {
         }
         if (src == gui.getUsedTagsButton()) {
             tagThrash();
+        }
+        if (src == removeFromBinButton) {
+            DefaultListModel model = (DefaultListModel) usedTagsList.getModel();
+            int selectedIndex = usedTagsList.getSelectedIndex();
+            String selectedUsedTag = String.valueOf(model.getElementAt(selectedIndex));
+            usedRepository.deleteUsedTag(selectedUsedTag);
+            model.removeElementAt(selectedIndex);
         }
     }
 }
