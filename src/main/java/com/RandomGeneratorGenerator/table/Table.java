@@ -4,11 +4,11 @@ import com.RandomGeneratorGenerator.repository.ContentRepository;
 import com.RandomGeneratorGenerator.repository.NameRepository;
 import com.RandomGeneratorGenerator.repository.TagRepository;
 import lombok.Getter;
-import org.hibernate.NonUniqueResultException;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.util.ArrayList;
 
 @Component
@@ -43,9 +43,10 @@ public class Table {
     }
 
         table = new JTable(model);
+        table.setBackground(new Color(224,131,0));
+        table.setForeground(Color.BLACK);
 
         JScrollPane scroller = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
     }
-
 }
