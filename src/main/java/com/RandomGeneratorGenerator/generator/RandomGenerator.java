@@ -123,11 +123,11 @@ try {
                 Collections.shuffle(namesFromDb);
             }
         }
+
         usedTagsToCheck();
-        System.out.println(usedTagsToCheck());
+
         for (Long s : usedTagsToCheck()) {
             namesFromDb.remove(s);
-            System.out.println(namesFromDb);
         }
 try {
     if (Integer.parseInt(gui.getQuantityToGenerate().getText()) < 0) {

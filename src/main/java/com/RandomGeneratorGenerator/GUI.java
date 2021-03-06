@@ -1,5 +1,6 @@
 package com.RandomGeneratorGenerator;
 
+import com.RandomGeneratorGenerator.table.Table;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,7 @@ import java.io.IOException;
 @Getter
 public class GUI implements Runnable {
 
-
+    private final Table table;
     //Frame
     private BufferedImage image;
     private BufferedImage imageOnContent;
@@ -32,9 +33,9 @@ public class GUI implements Runnable {
     private final JPanel moreTagsPanel = new JPanel();
     private final JButton saveSet = new JButton("Save set");
     private final JButton removeGeneratedName = new JButton("Remove");
-    private final JButton usedTagsButton = new JButton("Tag's bin");
-    private final JButton addToUsedTags = new JButton("Mark as used");
-    private final JButton addAllToUsedTagsButton = new JButton("Mark all as used");
+    private final JButton usedTagsButton = new JButton("Oblivion");
+    private final JButton addToUsedTags = new JButton("Yeet into Oblivion");
+    private final JButton addAllToUsedTagsButton = new JButton("Yeet all into Oblivion");
     private final JPanel generatedNamesPanel = new JPanel();
     private final JTextField quantityToGenerate = new JTextField("10", 2);
     private final JPanel generatingPan = new JPanel();
@@ -53,7 +54,8 @@ public class GUI implements Runnable {
 
     private final Thread runner;
 
-    public GUI() {
+    public GUI(Table table) {
+        this.table = table;
         runner = new Thread(this);
         runner.start();
     }
@@ -189,6 +191,7 @@ public class GUI implements Runnable {
         generatingPan.add(generatedNamesPanel, BorderLayout.CENTER);
 
         savingPanel.add(saveButton);
+        savingPanel.add(table.getTable());
         savingPanel.add(tagButton);
         savingPanel.add(contentButton);
         savingPanel.add(new JLabel("WORK IN PROGRESS!"));
