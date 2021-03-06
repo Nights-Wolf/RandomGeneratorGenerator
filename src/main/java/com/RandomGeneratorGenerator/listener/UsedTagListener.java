@@ -2,6 +2,7 @@ package com.RandomGeneratorGenerator.listener;
 
 import com.RandomGeneratorGenerator.GUI;
 import com.RandomGeneratorGenerator.model.Used;
+import com.RandomGeneratorGenerator.repository.NameRepository;
 import com.RandomGeneratorGenerator.repository.UsedRepository;
 import com.RandomGeneratorGenerator.service.SaveUsed;
 import lombok.Getter;
@@ -21,14 +22,16 @@ public class UsedTagListener implements ActionListener {
 
     private final GUI gui;
     private final SaveUsed saveUsed;
+    private final NameRepository nameRepository;
     private final UsedRepository usedRepository;
     private final JButton removeFromBinButton = new JButton("Remove");
     private final JButton removeAllFromBinButton = new JButton("Remove all");
     private final JList usedTagsList = new JList();
 
-    public UsedTagListener(GUI gui, SaveUsed saveUsed, UsedRepository usedRepository) {
+    public UsedTagListener(GUI gui, SaveUsed saveUsed, NameRepository nameRepository, UsedRepository usedRepository) {
         this.gui = gui;
         this.saveUsed = saveUsed;
+        this.nameRepository = nameRepository;
         this.usedRepository = usedRepository;
     }
 
@@ -38,6 +41,16 @@ public class UsedTagListener implements ActionListener {
         gui.getUsedTagsButton().addActionListener(this);
         removeAllFromBinButton.addActionListener(this);
         removeFromBinButton.addActionListener(this);
+    }
+
+
+    public ArrayList<String> usedTags() {
+        ArrayList<String> usedTags = new ArrayList<>();
+        ArrayList<Long> usedTagsId = usedRepository.getUsedTags();
+        for (Long i : usedTagsId) {
+            usedTags.add(nameRepository.getNamesById(i));
+        }
+        return usedTags;
     }
 
     public void tagThrash() {
@@ -50,9 +63,8 @@ public class UsedTagListener implements ActionListener {
         usedTagsPane.setLayout(new FlowLayout(FlowLayout.CENTER));
         usedTagsPane.setBackground(new Color(231, 188, 13));
         usedTagsFrame.add(usedTagsPane);
-        ArrayList<String> usedTags = usedRepository.getUsedTags();
         DefaultListModel model = new DefaultListModel();
-        model.addAll(usedTags);
+        model.addAll(usedTags());
         usedTagsList.setModel(model);
         usedTagsList.setVisibleRowCount(10);
         usedTagsList.setBackground(new Color(224,131,0));
@@ -81,8 +93,9 @@ public class UsedTagListener implements ActionListener {
             DefaultListModel<ListModel> model = (DefaultListModel) gui.getGeneratedNames().getModel();
             int selectedIndex = gui.getGeneratedNames().getSelectedIndex();
             String nameToAdd = String.valueOf(model.getElementAt(selectedIndex));
+            long nameId = nameRepository.getNameIdByName(nameToAdd);
             Used used = new Used();
-            used.setUsed_Tags_name(nameToAdd);
+            used.setName_id(nameId);
             saveUsed.saveUsed(used);
         }
         if (src == gui.getUsedTagsButton()) {
@@ -92,8 +105,14 @@ public class UsedTagListener implements ActionListener {
             DefaultListModel model = (DefaultListModel) usedTagsList.getModel();
             int selectedIndex = usedTagsList.getSelectedIndex();
             String selectedUsedTag = String.valueOf(model.getElementAt(selectedIndex));
-            usedRepository.deleteUsedTag(selectedUsedTag);
+           long idToRemove = nameRepository.getNameIdByName(selectedUsedTag);
+            usedRepository.deleteUsedTag(idToRemove);
             model.removeElementAt(selectedIndex);
+        }
+        if (src == removeAllFromBinButton) {
+            usedRepository.deleteAllUsedTag();
+            DefaultListModel model = (DefaultListModel) usedTagsList.getModel();
+            model.removeAllElements();
         }
     }
 }

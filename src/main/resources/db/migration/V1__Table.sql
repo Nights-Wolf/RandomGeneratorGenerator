@@ -105,6 +105,7 @@ CONSTRAINT kitsContent_fk2 FOREIGN KEY (name_id) REFERENCES Name(name_id)
 
 CREATE TABLE Used (
 used_Tags_id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-used_Tags_name VARCHAR(50),
-CONSTRAINT used_pk PRIMARY KEY (used_Tags_id)
+name_id INTEGER,
+CONSTRAINT used_pk PRIMARY KEY (used_Tags_id),
+CONSTRAINT used_fk FOREIGN KEY (name_id) REFERENCES Name(name_id)
 );

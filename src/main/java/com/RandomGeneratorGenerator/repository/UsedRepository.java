@@ -14,11 +14,16 @@ import java.util.ArrayList;
 public interface UsedRepository extends JpaRepository<Used, Long> {
 
 
-    @Query(value = "SELECT used_Tags_name FROM Used")
-    ArrayList<String> getUsedTags();
+    @Query(value = "SELECT name_id FROM Used")
+    ArrayList<Long> getUsedTags();
 
     @Transactional
     @Modifying
-    @Query(value = "DELETE FROM Used WHERE used_Tags_name = :name")
-    void deleteUsedTag(@Param("name") String name);
+    @Query(value = "DELETE FROM Used WHERE name_id = :id")
+    void deleteUsedTag(@Param("id") Long id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM Used")
+    void deleteAllUsedTag();
 }

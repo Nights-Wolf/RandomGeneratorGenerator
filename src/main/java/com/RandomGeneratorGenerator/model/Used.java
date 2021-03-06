@@ -18,6 +18,6 @@ public class Used {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long usedTags_id;
-    private String used_Tags_name;
+    private long name_id;
 
 }
