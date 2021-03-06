@@ -34,6 +34,7 @@ public class GUI implements Runnable {
     private final JButton removeGeneratedName = new JButton("Remove");
     private final JButton usedTagsButton = new JButton("Tag's bin");
     private final JButton addToUsedTags = new JButton("Mark as used");
+    private final JButton addAllToUsedTagsButton = new JButton("Mark all as used");
     private final JPanel generatedNamesPanel = new JPanel();
     private final JTextField quantityToGenerate = new JTextField("10", 2);
     private final JPanel generatingPan = new JPanel();
@@ -162,10 +163,14 @@ public class GUI implements Runnable {
         removeGeneratedName.setVisible(false);
         usedTagsButton.setBackground(new Color(224,131,0));
         usedTagsButton.setForeground(Color.BLACK);
+        addAllToUsedTagsButton.setBackground(new Color(224,131,0));
+        addAllToUsedTagsButton.setForeground(Color.BLACK);
+        addAllToUsedTagsButton.setVisible(false);
         addToUsedTags.setBackground(new Color(224,131,0));
         addToUsedTags.setForeground(Color.BLACK);
         addToUsedTags.setVisible(false);
         removeNamePanel.add(usedTagsButton);
+        removeNamePanel.add(addAllToUsedTagsButton);
         removeNamePanel.add(addToUsedTags);
         removeNamePanel.add(removeGeneratedName);
         generatedNames.setLayoutOrientation(JList.VERTICAL);

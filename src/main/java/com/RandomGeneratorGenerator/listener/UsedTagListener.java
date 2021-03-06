@@ -41,6 +41,7 @@ public class UsedTagListener implements ActionListener {
         gui.getUsedTagsButton().addActionListener(this);
         removeAllFromBinButton.addActionListener(this);
         removeFromBinButton.addActionListener(this);
+        gui.getAddAllToUsedTagsButton().addActionListener(this);
     }
 
 
@@ -113,6 +114,15 @@ public class UsedTagListener implements ActionListener {
             usedRepository.deleteAllUsedTag();
             DefaultListModel model = (DefaultListModel) usedTagsList.getModel();
             model.removeAllElements();
+        }
+        if (src == gui.getAddAllToUsedTagsButton()) {
+            DefaultListModel model = (DefaultListModel) gui.getGeneratedNames().getModel();
+            for (int i = 0; i < model.getSize(); i++) {
+                long namesId = nameRepository.getNameIdByName(String.valueOf(model.getElementAt(i)));
+                Used used = new Used();
+                used.setName_id(namesId);
+                saveUsed.saveUsed(used);
+            }
         }
     }
 }
