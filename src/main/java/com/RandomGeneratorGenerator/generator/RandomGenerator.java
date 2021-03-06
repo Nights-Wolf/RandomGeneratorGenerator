@@ -2,7 +2,9 @@ package com.RandomGeneratorGenerator.generator;
 
 import com.RandomGeneratorGenerator.GUI;
 import com.RandomGeneratorGenerator.repository.ContentRepository;
+import com.RandomGeneratorGenerator.repository.NameRepository;
 import com.RandomGeneratorGenerator.repository.TagRepository;
+import com.RandomGeneratorGenerator.repository.UsedRepository;
 import org.springframework.aop.AopInvocationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,12 +19,21 @@ public class RandomGenerator {
     private final GUI gui;
     private final ContentRepository contentRepository;
     private final TagRepository tagRepository;
+    private final UsedRepository usedRepository;
+    private final NameRepository nameRepository;
 
     @Autowired
-    public RandomGenerator(GUI gui, ContentRepository contentRepository, TagRepository tagRepository) {
+    public RandomGenerator(GUI gui, ContentRepository contentRepository, TagRepository tagRepository, UsedRepository usedRepository, NameRepository nameRepository) {
         this.gui = gui;
         this.contentRepository = contentRepository;
         this.tagRepository = tagRepository;
+        this.usedRepository = usedRepository;
+        this.nameRepository = nameRepository;
+    }
+
+    public ArrayList<Long> usedTagsToCheck() {
+        ArrayList<Long> usedTags = usedRepository.getUsedTags();
+        return usedTags;
     }
 
     public long[] generateNumber() {
@@ -111,6 +122,12 @@ try {
                 namesFromDb.add(e);
                 Collections.shuffle(namesFromDb);
             }
+        }
+        usedTagsToCheck();
+        System.out.println(usedTagsToCheck());
+        for (Long s : usedTagsToCheck()) {
+            namesFromDb.remove(s);
+            System.out.println(namesFromDb);
         }
 try {
     if (Integer.parseInt(gui.getQuantityToGenerate().getText()) < 0) {
