@@ -38,7 +38,7 @@ public class Table {
         }
 
     for (String name : names) {
-        String[] namesToAdd = {name, "Name"};
+        String[] namesToAdd = {name, nameRepository.getCategoryByName(name)};
         model.addRow(namesToAdd);
     }
 
