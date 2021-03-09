@@ -19,23 +19,23 @@ category VARCHAR(50),
 CONSTRAINT name_pk PRIMARY KEY (name_id)
 );
 
-INSERT INTO Name (name_name, category) VALUES ('Dawid', 'Name');
-INSERT INTO Name (name_name, category) VALUES ('Artur', 'Name');
-INSERT INTO Name (name_name, category) VALUES ('Kamila', 'Name');
-INSERT INTO Name (name_name, category) VALUES ('Kuba', 'Name');
-INSERT INTO Name (name_name, category) VALUES ('Julian', 'Name');
-INSERT INTO Name (name_name, category) VALUES ('Agata', 'Name');
-INSERT INTO Name (name_name, category) VALUES ('Dominika', 'Name');
-INSERT INTO Name (name_name, category) VALUES ('Kamil', 'Name');
-INSERT INTO Name (name_name, category) VALUES ('Damian', 'Name');
-INSERT INTO Name (name_name, category) VALUES ('Karol', 'Name');
-INSERT INTO Name (name_name, category) VALUES ('Julia', 'Name');
-INSERT INTO Name (name_name, category) VALUES ('Zuza', 'Name');
-INSERT INTO Name (name_name, category) VALUES ('Grześ', 'Name');
-INSERT INTO Name (name_name, category) VALUES ('Magic Poison', 'Item');
-INSERT INTO Name (name_name, category) VALUES ('Wand', 'Item');
-INSERT INTO Name (name_name, category) VALUES ('Sword', 'Item');
-INSERT INTO Name (name_name, category) VALUES ('Wunderbachtenfreunde', 'Item');
+INSERT INTO Name (name_name) VALUES ('Dawid');
+INSERT INTO Name (name_name) VALUES ('Artur');
+INSERT INTO Name (name_name) VALUES ('Kamila');
+INSERT INTO Name (name_name) VALUES ('Kuba');
+INSERT INTO Name (name_name) VALUES ('Julian');
+INSERT INTO Name (name_name) VALUES ('Agata');
+INSERT INTO Name (name_name) VALUES ('Dominika');
+INSERT INTO Name (name_name) VALUES ('Kamil');
+INSERT INTO Name (name_name) VALUES ('Damian');
+INSERT INTO Name (name_name) VALUES ('Karol');
+INSERT INTO Name (name_name) VALUES ('Julia');
+INSERT INTO Name (name_name) VALUES ('Zuza');
+INSERT INTO Name (name_name) VALUES ('Grześ');
+INSERT INTO Name (name_name) VALUES ('Magic Poison');
+INSERT INTO Name (name_name) VALUES ('Wand');
+INSERT INTO Name (name_name) VALUES ('Sword');
+INSERT INTO Name (name_name) VALUES ('Wunderbachtenfreunde');
 
 
 CREATE TABLE Content (

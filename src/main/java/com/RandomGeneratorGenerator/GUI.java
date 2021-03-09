@@ -15,7 +15,7 @@ import java.io.IOException;
 @Getter
 public class GUI implements Runnable {
 
-    private final Table table;
+    private Table table;
     //Frame
     private BufferedImage image;
     private BufferedImage imageOnContent;
@@ -191,7 +191,9 @@ public class GUI implements Runnable {
         generatingPan.add(generatedNamesPanel, BorderLayout.CENTER);
 
         savingPanel.add(saveButton);
-        savingPanel.add(table.getTable());
+        JScrollPane tableScroller = new JScrollPane(table.getTable());
+        tableScroller.setPreferredSize(new Dimension(400, 200));
+        savingPanel.add(tableScroller);
         savingPanel.add(tagButton);
         savingPanel.add(contentButton);
         savingPanel.add(new JLabel("WORK IN PROGRESS!"));

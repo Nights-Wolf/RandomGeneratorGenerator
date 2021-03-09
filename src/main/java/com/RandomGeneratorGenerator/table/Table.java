@@ -7,15 +7,17 @@ import lombok.Getter;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @Component
 @Getter
 public class Table {
 
-    public JTable table;
+    private final JTable table;
     private final NameRepository nameRepository;
     private final TagRepository tagRepository;
     private final ContentRepository contentRepository;
@@ -27,26 +29,46 @@ public class Table {
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Content");
-        model.addColumn("Category");
 
         ArrayList<String> tags = tagRepository.getTags();
         ArrayList<String> names = nameRepository.getNames();
 
         for (String tag : tags) {
-            String [] tagsToAdd = {tag, "Tag"};
-            model.addRow(tagsToAdd);
+            model.addColumn(tag);
         }
 
     for (String name : names) {
-        String[] namesToAdd = {name, nameRepository.getCategoryByName(name)};
+        String[] namesToAdd = {name};
         model.addRow(namesToAdd);
+    }
+
+    for (int i = 0; i < names.size(); i++) {
+        Object value = model.getValueAt(i, 0);
+        try {
+            for (String tag : tags) {
+                long nameId = nameRepository.getNameIdByName(value.toString());
+                long tagId = tagRepository.getTagByName(tag);
+                ArrayList<Long> tagIdFromContent = contentRepository.getSingleTagByNameId(nameId);
+                for (Long aLong : tagIdFromContent) {
+                    if (tagId == aLong) {
+                        model.setValueAt("+", i, model.findColumn(tag));
+                    }
+                }
+                }
+        } catch (Exception e) {
+
+        }
     }
 
         table = new JTable(model);
         table.setBackground(new Color(224,131,0));
         table.setForeground(Color.BLACK);
+        table.setFillsViewportHeight(true);
+        table.getTableHeader().setBackground(new Color(224,131,0));
+        table.getTableHeader().setForeground(Color.BLACK);
 
-        JScrollPane scroller = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        table.setDefaultRenderer(String.class, centerRenderer);
     }
 }

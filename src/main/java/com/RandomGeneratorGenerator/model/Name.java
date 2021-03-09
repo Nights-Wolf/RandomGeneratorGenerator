@@ -19,6 +19,5 @@ public class Name {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long name_id;
     private String name_name;
-    private String category;
 
 }
