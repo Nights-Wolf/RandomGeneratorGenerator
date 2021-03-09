@@ -44,6 +44,7 @@ public class GUI implements Runnable {
     private final JButton saveButton = new JButton("Save name");
     private final JButton tagButton = new JButton("Save tag");
     private final JButton contentButton = new JButton("Save content");
+    private final JTextField addNewName = new JTextField(10);
     //Content Tab
     private final JPanel setsChoosingPanel = new JPanel();
     private final JComboBox<String> setsName = new JComboBox<>();
@@ -91,7 +92,7 @@ public class GUI implements Runnable {
         frame.add(generatingPan);
 
         JPanel savingPanel = new JPanel();
-        savingPanel.setLayout(new FlowLayout());
+        savingPanel.setLayout(new BorderLayout());
         savingPanel.setBackground(new Color(231, 188, 13));
         frame.add(savingPanel);
 
@@ -190,13 +191,17 @@ public class GUI implements Runnable {
         generatedNamesPanel.add(listPane, BorderLayout.CENTER);
         generatingPan.add(generatedNamesPanel, BorderLayout.CENTER);
 
-        savingPanel.add(saveButton);
         JScrollPane tableScroller = new JScrollPane(table.getTable());
-        tableScroller.setPreferredSize(new Dimension(400, 200));
-        savingPanel.add(tableScroller);
-        savingPanel.add(tagButton);
-        savingPanel.add(contentButton);
-        savingPanel.add(new JLabel("WORK IN PROGRESS!"));
+        tableScroller.setPreferredSize(new Dimension(450, 400));
+        savingPanel.add(tableScroller, BorderLayout.CENTER);
+        JPanel addNamePanel = new JPanel();
+        addNamePanel.setLayout(new FlowLayout());
+        addNamePanel.add(addNewName);
+        addNamePanel.add(saveButton);
+        savingPanel.add(addNamePanel, BorderLayout.SOUTH);
+        //savingPanel.add(tagButton);
+        //savingPanel.add(contentButton);
+       // savingPanel.add(new JLabel("WORK IN PROGRESS!"));
 
         setsChoosingPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         JPanel listPanel = new JPanel();

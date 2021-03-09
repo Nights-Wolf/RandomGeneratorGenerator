@@ -81,5 +81,7 @@ public class Table {
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         table.setDefaultRenderer(String.class, centerRenderer);
 
+        table.setAutoCreateRowSorter(true);
+
     }
 }
