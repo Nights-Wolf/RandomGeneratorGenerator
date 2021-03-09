@@ -27,7 +27,17 @@ public class Table {
         this.tagRepository = tagRepository;
         this.contentRepository = contentRepository;
 
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                switch (columnIndex) {
+                    case 0:
+                        return String.class;
+                    default:
+                        return Boolean.class;
+                }
+            }
+        };
         model.addColumn("Content");
 
         ArrayList<String> tags = tagRepository.getTags();
@@ -51,10 +61,10 @@ public class Table {
                 ArrayList<Long> tagIdFromContent = contentRepository.getSingleTagByNameId(nameId);
                 for (Long aLong : tagIdFromContent) {
                     if (tagId == aLong) {
-                        model.setValueAt("+", i, model.findColumn(tag));
+                        model.setValueAt(true, i, model.findColumn(tag));
                     }
                 }
-                }
+            }
         } catch (Exception e) {
 
         }
@@ -70,5 +80,6 @@ public class Table {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         table.setDefaultRenderer(String.class, centerRenderer);
+
     }
 }
