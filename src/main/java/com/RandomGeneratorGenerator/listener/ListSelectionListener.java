@@ -1,6 +1,7 @@
 package com.RandomGeneratorGenerator.listener;
 
 import com.RandomGeneratorGenerator.GUI;
+import com.RandomGeneratorGenerator.table.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
@@ -13,11 +14,13 @@ public class ListSelectionListener implements javax.swing.event.ListSelectionLis
 
     private final GUI gui;
     private final UsedTagListener usedTagListener;
+    private final Table table;
 
     @Autowired
-    public ListSelectionListener(GUI gui, UsedTagListener usedTagListener) {
+    public ListSelectionListener(GUI gui, UsedTagListener usedTagListener, Table table) {
         this.gui = gui;
         this.usedTagListener = usedTagListener;
+        this.table = table;
     }
 
     @EventListener(ApplicationStartedEvent.class)

@@ -37,7 +37,6 @@ INSERT INTO Name (name_name) VALUES ('Wand');
 INSERT INTO Name (name_name) VALUES ('Sword');
 INSERT INTO Name (name_name) VALUES ('Wunderbachtenfreunde');
 
-
 CREATE TABLE Content (
 content_id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 tag_id INTEGER,

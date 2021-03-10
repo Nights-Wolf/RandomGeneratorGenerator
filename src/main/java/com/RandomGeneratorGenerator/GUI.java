@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -15,7 +17,7 @@ import java.io.IOException;
 @Getter
 public class GUI implements Runnable {
 
-    private Table table;
+    private final Table table;
     //Frame
     private BufferedImage image;
     private BufferedImage imageOnContent;
@@ -43,8 +45,9 @@ public class GUI implements Runnable {
     //Saving Tab
     private final JButton saveButton = new JButton("Save name");
     private final JButton tagButton = new JButton("Save tag");
-    private final JButton contentButton = new JButton("Save content");
-    private final JTextField addNewName = new JTextField(10);
+    private final JButton deleteButton = new JButton("Delete");
+    private final JTextField addNewName = new JTextField(5);
+    private final JTextField addNewTag = new JTextField(5);
     //Content Tab
     private final JPanel setsChoosingPanel = new JPanel();
     private final JComboBox<String> setsName = new JComboBox<>();
@@ -191,17 +194,37 @@ public class GUI implements Runnable {
         generatedNamesPanel.add(listPane, BorderLayout.CENTER);
         generatingPan.add(generatedNamesPanel, BorderLayout.CENTER);
 
+        table.getTable().getSelectionModel().addListSelectionListener(e -> {
+            int selectedRow = table.getTable().getSelectedRow();
+            if (table.getTable().isRowSelected(selectedRow)) {
+                deleteButton.setVisible(true);
+            } else {
+                deleteButton.setVisible(false);
+            }
+        });
         JScrollPane tableScroller = new JScrollPane(table.getTable());
         tableScroller.setPreferredSize(new Dimension(450, 400));
         savingPanel.add(tableScroller, BorderLayout.CENTER);
         JPanel addNamePanel = new JPanel();
         addNamePanel.setLayout(new FlowLayout());
+        addNamePanel.setBackground(new Color(231, 188, 13));
+        addNewTag.setBackground(new Color(224,131,0));
+        addNewTag.setForeground(Color.BLACK);
+        addNamePanel.add(addNewTag);
+        tagButton.setBackground(new Color(224,131,0));
+        tagButton.setForeground(Color.BLACK);
+        addNamePanel.add(tagButton);
+        addNewName.setBackground(new Color(224,131,0));
+        addNewName.setForeground(Color.BLACK);
         addNamePanel.add(addNewName);
+        saveButton.setBackground(new Color(224,131,0));
+        saveButton.setForeground(Color.BLACK);
         addNamePanel.add(saveButton);
+        deleteButton.setBackground(new Color(224,131,0));
+        deleteButton.setForeground(Color.BLACK);
+        addNamePanel.add(deleteButton);
+        deleteButton.setVisible(false);
         savingPanel.add(addNamePanel, BorderLayout.SOUTH);
-        //savingPanel.add(tagButton);
-        //savingPanel.add(contentButton);
-       // savingPanel.add(new JLabel("WORK IN PROGRESS!"));
 
         setsChoosingPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         JPanel listPanel = new JPanel();
