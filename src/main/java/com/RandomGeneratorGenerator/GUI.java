@@ -2,6 +2,7 @@ package com.RandomGeneratorGenerator;
 
 import com.RandomGeneratorGenerator.table.Table;
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.imageio.ImageIO;
@@ -46,6 +47,7 @@ public class GUI implements Runnable {
     private final JButton deleteButton = new JButton("Delete");
     private final JTextField addNewName = new JTextField(5);
     private final JTextField addNewTag = new JTextField(5);
+    private final JLabel savingIconLabel = new JLabel();
     //Content Tab
     private final JPanel setsChoosingPanel = new JPanel();
     private final JComboBox<String> setsName = new JComboBox<>();
@@ -56,6 +58,7 @@ public class GUI implements Runnable {
 
     private final Thread runner;
 
+    @Autowired
     public GUI(Table table) {
         this.table = table;
         runner = new Thread(this);
@@ -206,6 +209,8 @@ public class GUI implements Runnable {
         JPanel addNamePanel = new JPanel();
         addNamePanel.setLayout(new FlowLayout());
         addNamePanel.setBackground(new Color(231, 188, 13));
+        savingIconLabel.setIcon(new ImageIcon(image));
+        addNamePanel.add(savingIconLabel);
         addNewTag.setBackground(new Color(224,131,0));
         addNewTag.setForeground(Color.BLACK);
         addNamePanel.add(addNewTag);

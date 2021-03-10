@@ -1,15 +1,13 @@
 package com.RandomGeneratorGenerator.table;
 
-import com.RandomGeneratorGenerator.GUI;
 import com.RandomGeneratorGenerator.repository.ContentRepository;
 import com.RandomGeneratorGenerator.repository.NameRepository;
 import com.RandomGeneratorGenerator.repository.TagRepository;
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -24,6 +22,7 @@ public class Table {
     private final TagRepository tagRepository;
     private final ContentRepository contentRepository;
 
+    @Autowired
     public Table(NameRepository nameRepository, TagRepository tagRepository, ContentRepository contentRepository) {
         this.nameRepository = nameRepository;
         this.tagRepository = tagRepository;
@@ -87,3 +86,7 @@ public class Table {
 
     }
 }
+
+//somelierzy, gastronomia - restauratorzy, winiarze, producenci szkła, konsumenci domowi
+//materiał - koszt, koszt wytworzenia, mały rynek zbytu, ciężkie warunki pracy, krytyka konsumentów
+//krytyka konsumentów - design, kampania marketingowa, ankieta konsumencka, nawiązanie współpracy z winnicami, poprawa warunków pracy

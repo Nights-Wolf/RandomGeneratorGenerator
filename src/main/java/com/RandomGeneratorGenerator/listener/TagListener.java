@@ -55,6 +55,11 @@ public class TagListener implements ActionListener {
 
                 gui.getAddNewTag().setText("");
 
+                gui.getFirstTags().removeAllItems();
+                gui.getSecondTags().removeAllItems();
+                gui.getThirdTags().removeAllItems();
+                gui.getFourthTags().removeAllItems();
+
                 saveTag.addTagsToBox();
             }
         }

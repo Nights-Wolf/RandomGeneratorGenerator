@@ -20,14 +20,12 @@ public class RandomListener implements ActionListener {
     private final NameRepository nameRepository;
     private final GUI gui;
     private final RandomGenerator randomGenerator;
-    private final Name name;
 
     @Autowired
-    public RandomListener(NameRepository nameRepository, GUI gui, RandomGenerator randomGenerator, Name name) {
+    public RandomListener(NameRepository nameRepository, GUI gui, RandomGenerator randomGenerator) {
         this.nameRepository = nameRepository;
         this.gui = gui;
         this.randomGenerator = randomGenerator;
-        this.name = name;
     }
 
     @EventListener(ApplicationStartedEvent.class)
