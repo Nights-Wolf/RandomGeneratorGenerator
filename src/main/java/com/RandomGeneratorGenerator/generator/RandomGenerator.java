@@ -153,7 +153,7 @@ try {
     }
 }catch (IndexOutOfBoundsException e) {
     JOptionPane.showMessageDialog(new JFrame("Warning!"),
-            "Choose first tag!");
+            "First tag is not selected or is empty!");
 }
             return chosenNames;
         }

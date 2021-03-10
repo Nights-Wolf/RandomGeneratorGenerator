@@ -43,14 +43,18 @@ public class NameListener implements ActionListener {
             String nameToAdd = gui.getAddNewName().getText();
             if (nameRepository.getNames().contains(nameToAdd)) {
                 JOptionPane.showMessageDialog(new JFrame(), "Name already exists!");
-            } else  {
+            } else if (nameToAdd.equals("")) {
+                JOptionPane.showMessageDialog(new JFrame(), "Insert name!");
+            } else {
                 Name name = new Name();
-                name.setName_name(gui.getAddNewName().getText());
+                name.setName_name(nameToAdd);
                 saveName.newName(name);
 
                 DefaultTableModel model = (DefaultTableModel) table.getTable().getModel();
-                String[] addRow = {gui.getAddNewName().getText()};
+                String[] addRow = {nameToAdd};
                 model.addRow(addRow);
+
+                gui.getAddNewName().setText("");
             }
         }
     }

@@ -71,6 +71,7 @@ public class Table {
     }
 
         table = new JTable(model);
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         table.setBackground(new Color(224,131,0));
         table.setForeground(Color.BLACK);
         table.setFillsViewportHeight(true);

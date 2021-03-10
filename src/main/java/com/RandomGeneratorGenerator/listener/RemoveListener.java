@@ -1,6 +1,7 @@
 package com.RandomGeneratorGenerator.listener;
 
 import com.RandomGeneratorGenerator.GUI;
+import com.RandomGeneratorGenerator.repository.ContentRepository;
 import com.RandomGeneratorGenerator.repository.KitsContentRepository;
 import com.RandomGeneratorGenerator.repository.KitsNameRepository;
 import com.RandomGeneratorGenerator.repository.NameRepository;
@@ -25,15 +26,17 @@ public class RemoveListener implements ActionListener {
     private final KitsNameRepository kitsNameRepository;
     private final ShowSetListener showSetListener;
     private final Table table;
+    private final ContentRepository contentRepository;
 
     @Autowired
-    public RemoveListener(GUI gui, KitsContentRepository kitsContentRepository, NameRepository nameRepository, KitsNameRepository kitsNameRepository, ShowSetListener showSetListener, Table table) {
+    public RemoveListener(GUI gui, KitsContentRepository kitsContentRepository, NameRepository nameRepository, KitsNameRepository kitsNameRepository, ShowSetListener showSetListener, Table table, ContentRepository contentRepository) {
         this.gui = gui;
         this.kitsContentRepository = kitsContentRepository;
         this.nameRepository = nameRepository;
         this.kitsNameRepository = kitsNameRepository;
         this.showSetListener = showSetListener;
         this.table = table;
+        this.contentRepository = contentRepository;
     }
 
     @EventListener(ApplicationStartedEvent.class)
@@ -76,6 +79,7 @@ public class RemoveListener implements ActionListener {
             int column = 0;
             String value = table.getTable().getValueAt(i, column).toString();
             long nameId = nameRepository.getNameIdByName(value);
+            contentRepository.deleteNameFromContent(nameId);
             nameRepository.deleteName(nameId);
             model.removeRow(i);
         }
