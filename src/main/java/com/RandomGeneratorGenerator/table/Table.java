@@ -86,7 +86,3 @@ public class Table {
 
     }
 }
-
-//somelierzy, gastronomia - restauratorzy, winiarze, producenci szkła, konsumenci domowi
-//materiał - koszt, koszt wytworzenia, mały rynek zbytu, ciężkie warunki pracy, krytyka konsumentów
-//krytyka konsumentów - design, kampania marketingowa, ankieta konsumencka, nawiązanie współpracy z winnicami, poprawa warunków pracy

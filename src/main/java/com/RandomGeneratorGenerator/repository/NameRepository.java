@@ -26,4 +26,9 @@ public interface NameRepository extends JpaRepository<Name, Long> {
     @Modifying
     @Query(value = "DELETE FROM Name WHERE name_id = :id")
     void deleteName(@Param("id") Long id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE Name SET name_name = :name WHERE name_id = :id")
+    void updateName(@Param("name") String name, @Param("id") Long id);
 }

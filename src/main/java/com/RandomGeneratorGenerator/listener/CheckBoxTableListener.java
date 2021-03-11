@@ -1,10 +1,12 @@
 package com.RandomGeneratorGenerator.listener;
 
 import com.RandomGeneratorGenerator.model.Content;
+import com.RandomGeneratorGenerator.model.Name;
 import com.RandomGeneratorGenerator.repository.ContentRepository;
 import com.RandomGeneratorGenerator.repository.NameRepository;
 import com.RandomGeneratorGenerator.repository.TagRepository;
 import com.RandomGeneratorGenerator.service.SaveContent;
+import com.RandomGeneratorGenerator.service.SaveName;
 import com.RandomGeneratorGenerator.table.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
@@ -23,14 +25,16 @@ public class CheckBoxTableListener implements TableModelListener {
     private final TagRepository tagRepository;
     private final SaveContent saveContent;
     private final ContentRepository contentRepository;
+    private final SaveName saveName;
 
     @Autowired
-    public CheckBoxTableListener(Table table, NameRepository nameRepository, TagRepository tagRepository, SaveContent saveContent, ContentRepository contentRepository) {
+    public CheckBoxTableListener(Table table, NameRepository nameRepository, TagRepository tagRepository, SaveContent saveContent, ContentRepository contentRepository, SaveName saveName) {
         this.table = table;
         this.nameRepository = nameRepository;
         this.tagRepository = tagRepository;
         this.saveContent = saveContent;
         this.contentRepository = contentRepository;
+        this.saveName = saveName;
     }
 
 
@@ -43,8 +47,8 @@ public class CheckBoxTableListener implements TableModelListener {
     public void tableChanged(TableModelEvent e) {
         int row = e.getFirstRow();
         int column = e.getColumn();
+        TableModel model = (TableModel) e.getSource();
         if (column > 0) {
-            TableModel model = (TableModel) e.getSource();
             String columnName = model.getColumnName(column);
             String rowValue =  model.getValueAt(row, 0).toString();
             Boolean checked = (Boolean) model.getValueAt(row, column);
@@ -59,6 +63,11 @@ public class CheckBoxTableListener implements TableModelListener {
             } else {
                 contentRepository.deleteFromContent(tagId, nameId);
             }
+        }
+        if (column == 0) {
+            String nameToEdit = model.getValueAt(row, 0).toString();
+            long nameId = row + 1;
+            nameRepository.updateName(nameToEdit, nameId);
         }
     }
 }
