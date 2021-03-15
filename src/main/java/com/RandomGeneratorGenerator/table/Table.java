@@ -83,6 +83,7 @@ public class Table {
         table.setDefaultRenderer(String.class, centerRenderer);
 
         table.setAutoCreateRowSorter(true);
+        table.getTableHeader().setReorderingAllowed(false);
 
     }
 }

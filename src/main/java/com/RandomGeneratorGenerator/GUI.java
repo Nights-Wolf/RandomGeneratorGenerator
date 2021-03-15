@@ -42,12 +42,14 @@ public class GUI implements Runnable {
     private final JPanel generatingPan = new JPanel();
     private final JScrollPane scroller = new JScrollPane(generatedNames, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
     //Saving Tab
+    private final JPanel savingPanel = new JPanel();
     private final JButton saveButton = new JButton("Save name");
     private final JButton tagButton = new JButton("Save tag");
     private final JButton deleteButton = new JButton("Delete");
     private final JTextField addNewName = new JTextField(5);
     private final JTextField addNewTag = new JTextField(5);
     private final JLabel savingIconLabel = new JLabel();
+    private final JButton deleteTag = new JButton("Delete Tag");
     //Content Tab
     private final JPanel setsChoosingPanel = new JPanel();
     private final JComboBox<String> setsName = new JComboBox<>();
@@ -95,7 +97,6 @@ public class GUI implements Runnable {
         generatingPan.setBackground(new Color(231, 188, 13));
         frame.add(generatingPan);
 
-        JPanel savingPanel = new JPanel();
         savingPanel.setLayout(new BorderLayout());
         savingPanel.setBackground(new Color(231, 188, 13));
         frame.add(savingPanel);
@@ -223,10 +224,19 @@ public class GUI implements Runnable {
         saveButton.setBackground(new Color(224,131,0));
         saveButton.setForeground(Color.BLACK);
         addNamePanel.add(saveButton);
+        JPanel deletePanel = new JPanel();
+        BoxLayout box = new BoxLayout(deletePanel, BoxLayout.Y_AXIS);
+        deletePanel.setLayout(box);
+        deletePanel.setBackground(new Color(231, 188, 13));
         deleteButton.setBackground(new Color(224,131,0));
         deleteButton.setForeground(Color.BLACK);
-        addNamePanel.add(deleteButton);
+        deletePanel.add(deleteButton);
         deleteButton.setVisible(false);
+        deleteTag.setBackground(new Color(224,131,0));
+        deleteTag.setForeground(Color.BLACK);
+        deletePanel.add(deleteTag);
+        deleteTag.setVisible(false);
+        addNamePanel.add(deletePanel);
         savingPanel.add(addNamePanel, BorderLayout.SOUTH);
 
         setsChoosingPanel.setLayout(new FlowLayout(FlowLayout.CENTER));

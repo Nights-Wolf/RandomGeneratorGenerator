@@ -11,6 +11,7 @@ import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
@@ -20,17 +21,17 @@ public class CheckBoxTableListener implements TableModelListener {
 
     private final Table table;
     private final NameRepository nameRepository;
-    private final TagRepository tagRepository;
     private final SaveContent saveContent;
     private final ContentRepository contentRepository;
+    private final TagRepository tagRepository;
 
     @Autowired
-    public CheckBoxTableListener(Table table, NameRepository nameRepository, TagRepository tagRepository, SaveContent saveContent, ContentRepository contentRepository) {
+    public CheckBoxTableListener(Table table, NameRepository nameRepository, SaveContent saveContent, ContentRepository contentRepository, TagRepository tagRepository) {
         this.table = table;
         this.nameRepository = nameRepository;
-        this.tagRepository = tagRepository;
         this.saveContent = saveContent;
         this.contentRepository = contentRepository;
+        this.tagRepository = tagRepository;
     }
 
 
@@ -45,9 +46,10 @@ public class CheckBoxTableListener implements TableModelListener {
         int column = e.getColumn();
         TableModel model = (TableModel) e.getSource();
         if (column > 0) {
+            String columnValue = model.getColumnName(column);
             String rowValue =  model.getValueAt(row, 0).toString();
             Boolean checked = (Boolean) model.getValueAt(row, column);
-            long tagId = column;
+            long tagId = tagRepository.getTagByName(columnValue);
             long nameId = nameRepository.getNameIdByName(rowValue);
 
             if (checked) {
@@ -61,8 +63,12 @@ public class CheckBoxTableListener implements TableModelListener {
         }
         if (column == 0) {
             String nameToEdit = model.getValueAt(row, 0).toString();
-            long nameId = row + 1;
-            nameRepository.updateName(nameToEdit, nameId);
+            if (nameRepository.getNames().contains(nameToEdit)) {
+                JOptionPane.showMessageDialog(new JFrame(), "Name already exists!");
+            } else {
+                long nameId = row + 1;
+                nameRepository.updateName(nameToEdit, nameId);
+            }
         }
     }
 }

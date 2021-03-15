@@ -30,4 +30,9 @@ public interface TagRepository extends JpaRepository<Tag, Long> {
     @Modifying
     @Query(value = "UPDATE Tag SET tag_name = :name WHERE tag_id = :id")
     void updateTag(@Param("name") String name, @Param("id") Long id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM Tag WHERE tag_id = :id")
+    void deleteTag(@Param("id") Long id);
 }

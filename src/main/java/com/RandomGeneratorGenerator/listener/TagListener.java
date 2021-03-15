@@ -40,7 +40,7 @@ public class TagListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
         if (src == gui.getTagButton()) {
-            String tagToAdd = gui.getAddNewTag().getText();
+            String tagToAdd = gui.getAddNewTag().getText().toUpperCase();
             if (tagRepository.getTags().contains(tagToAdd)) {
                 JOptionPane.showMessageDialog(new JFrame(), "Tag already exists!");
             } else if (tagToAdd.equals("")) {

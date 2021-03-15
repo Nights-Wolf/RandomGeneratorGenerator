@@ -32,6 +32,11 @@ public interface ContentRepository extends JpaRepository<Content, Long> {
 
     @Transactional
     @Modifying
+    @Query(value = "DELETE FROM Content WHERE tag_id = :id")
+    void deleteTagFromContent(@Param("id") Long id);
+
+    @Transactional
+    @Modifying
     @Query(value = "DELETE FROM Content WHERE tag_id = :tag_id AND name_id = :name_id")
     void deleteFromContent(@Param("tag_id") Long tagId, @Param("name_id") Long nameId);
 }
