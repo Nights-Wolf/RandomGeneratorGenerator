@@ -27,6 +27,7 @@ public class UsedTagListener implements ActionListener {
     private final JButton removeFromBinButton = new JButton("Remove");
     private final JButton removeAllFromBinButton = new JButton("Remove all");
     private final JList usedTagsList = new JList();
+    private JDialog dialog;
 
     public UsedTagListener(GUI gui, SaveUsed saveUsed, NameRepository nameRepository, UsedRepository usedRepository) {
         this.gui = gui;
@@ -54,16 +55,10 @@ public class UsedTagListener implements ActionListener {
         return usedTags;
     }
 
-    public void tagThrash() {
-        JFrame usedTagsFrame = new JFrame("Oblivion");
-        usedTagsFrame.setSize(450, 250);
-        usedTagsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        JFrame.setDefaultLookAndFeelDecorated(true);
-        usedTagsFrame.setVisible(true);
+    public void tagThrash(Point p) {
         JPanel usedTagsPane = new JPanel();
         usedTagsPane.setLayout(new FlowLayout(FlowLayout.CENTER));
         usedTagsPane.setBackground(new Color(231, 188, 13));
-        usedTagsFrame.add(usedTagsPane);
         DefaultListModel model = new DefaultListModel();
         model.addAll(usedTags());
         usedTagsList.setModel(model);
@@ -85,6 +80,14 @@ public class UsedTagListener implements ActionListener {
         removeFromBinPane.add(removeFromBinButton);
         removeFromBinButton.setVisible(false);
         usedTagsPane.add(removeFromBinPane);
+        dialog = new JDialog();
+        dialog.setLocation(p);
+        dialog.setTitle("Oblivion");
+        dialog.add(usedTagsPane);
+        dialog.setSize(300, 300);
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.add(usedTagsPane);
+        dialog.setVisible(true);
     }
 
     @Override
@@ -94,13 +97,24 @@ public class UsedTagListener implements ActionListener {
             DefaultListModel<ListModel> model = (DefaultListModel) gui.getGeneratedNames().getModel();
             int selectedIndex = gui.getGeneratedNames().getSelectedIndex();
             String nameToAdd = String.valueOf(model.getElementAt(selectedIndex));
-            long nameId = nameRepository.getNameIdByName(nameToAdd);
-            Used used = new Used();
-            used.setName_id(nameId);
-            saveUsed.saveUsed(used);
+                long nameId = nameRepository.getNameIdByName(nameToAdd);
+            if (usedRepository.getUsedTags().contains(nameId)) {
+                JOptionPane.showMessageDialog(new JFrame(), "Name already sent into Oblivion");
+            } else {
+                Used used = new Used();
+                used.setName_id(nameId);
+                saveUsed.saveUsed(used);
+
+                if (dialog.isVisible()) {
+                    Point point = dialog.getLocationOnScreen();
+                    dialog.dispose();
+                    tagThrash(point);
+                }
+            }
         }
         if (src == gui.getUsedTagsButton()) {
-            tagThrash();
+            Point p = new Point(0,0);
+           tagThrash(p);
         }
         if (src == removeFromBinButton) {
             DefaultListModel model = (DefaultListModel) usedTagsList.getModel();
@@ -122,6 +136,11 @@ public class UsedTagListener implements ActionListener {
                 Used used = new Used();
                 used.setName_id(namesId);
                 saveUsed.saveUsed(used);
+            }
+            if (dialog.isVisible()) {
+                Point point = dialog.getLocationOnScreen();
+                dialog.dispose();
+                tagThrash(point);
             }
         }
     }

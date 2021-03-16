@@ -92,7 +92,6 @@ public class GUI implements Runnable {
             frame.setSize(500, 500);
             frame.setVisible(true);
 
-
         generatingPan.setLayout(new BorderLayout());
         generatingPan.setBackground(new Color(231, 188, 13));
         frame.add(generatingPan);
