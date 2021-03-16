@@ -89,9 +89,17 @@ public class EditTagListener implements Runnable {
     public void run() {
         if(tagRepository.getTags().contains(text.getText())) {
             JOptionPane.showMessageDialog(new JFrame(), "Tag already exists!");
+            renamePopup.setVisible(false);
         } else {
             tagRepository.updateTag(text.getText(), id);
             renamePopup.setVisible(false);
+            gui.getFirstTags().removeAllItems();
+            gui.getSecondTags().removeAllItems();
+            gui.getThirdTags().removeAllItems();
+            gui.getFourthTags().removeAllItems();
+
+            saveTag.addTagsToBox();
+        }
             DefaultTableModel model = new DefaultTableModel() {
                 @Override
                 public Class getColumnClass(int columnIndex) {
@@ -131,19 +139,10 @@ public class EditTagListener implements Runnable {
                 } catch (Exception e) {
                 }
             }
-
             table.getTable().setModel(model);
             table.getTable().getModel().addTableModelListener(checkBoxTableListener);
 
-            gui.getFirstTags().removeAllItems();
-            gui.getSecondTags().removeAllItems();
-            gui.getThirdTags().removeAllItems();
-            gui.getFourthTags().removeAllItems();
-
-            saveTag.addTagsToBox();
-
             gui.getDeleteTag().setVisible(false);
-        }
     }
 }
 

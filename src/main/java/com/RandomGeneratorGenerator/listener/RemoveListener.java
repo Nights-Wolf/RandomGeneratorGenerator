@@ -83,15 +83,14 @@ public class RemoveListener implements ActionListener {
 
     public void deleteNameFromTableAndDb() {
         DefaultTableModel model = (DefaultTableModel) table.getTable().getModel();
-        int[] rowsToDelete = table.getTable().getSelectedRows();
-        for (int i : rowsToDelete) {
-            int column = 0;
-            String value = table.getTable().getValueAt(i, column).toString();
+        int rowsToDelete = table.getTable().getSelectedRow();
+        int modelRow = table.getTable().convertRowIndexToModel(rowsToDelete);
+
+            String value = table.getTable().getValueAt(rowsToDelete, 0).toString();
             long nameId = nameRepository.getNameIdByName(value);
             contentRepository.deleteNameFromContent(nameId);
             nameRepository.deleteName(nameId);
-            model.removeRow(i);
-        }
+            model.removeRow(modelRow);
     }
 
     public void deleteTagFromTableAndDb() {

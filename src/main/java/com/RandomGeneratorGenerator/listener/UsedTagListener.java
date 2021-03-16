@@ -55,7 +55,7 @@ public class UsedTagListener implements ActionListener {
     }
 
     public void tagThrash() {
-        JFrame usedTagsFrame = new JFrame("Tags bin");
+        JFrame usedTagsFrame = new JFrame("Oblivion");
         usedTagsFrame.setSize(450, 250);
         usedTagsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         JFrame.setDefaultLookAndFeelDecorated(true);
