@@ -37,7 +37,7 @@ public class Table {
                 return Boolean.class;
             }
         };
-        model.addColumn("Content");
+        model.addColumn("CONTENT");
 
         ArrayList<String> tags = tagRepository.getTags();
         ArrayList<String> names = nameRepository.getNames();

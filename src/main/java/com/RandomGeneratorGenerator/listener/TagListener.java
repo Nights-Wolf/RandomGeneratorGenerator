@@ -36,32 +36,37 @@ public class TagListener implements ActionListener {
         gui.getTagButton().addActionListener(this);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        Object src = e.getSource();
-        if (src == gui.getTagButton()) {
-            String tagToAdd = gui.getAddNewTag().getText().toUpperCase();
-            if (tagRepository.getTags().contains(tagToAdd)) {
-                JOptionPane.showMessageDialog(new JFrame(), "Tag already exists!");
-            } else if (tagToAdd.equals("")) {
-                JOptionPane.showMessageDialog(new JFrame(), "Insert tag!");
-            } else {
-                Tag tag = new Tag();
-                tag.setTag_name(tagToAdd);
-                saveTag.newTag(tag);
+    public void saveNewTag() {
+        String tagToAdd = gui.getAddNewTag().getText().toUpperCase();
+        if (tagRepository.getTags().contains(tagToAdd)) {
+            JOptionPane.showMessageDialog(new JFrame(), "Tag already exists!");
+        } else if (tagToAdd.equals("")) {
+            JOptionPane.showMessageDialog(new JFrame(), "Insert tag!");
+        } else {
+            Tag tag = new Tag();
+            tag.setTag_name(tagToAdd);
+            saveTag.newTag(tag);
 
-                DefaultTableModel model = (DefaultTableModel) table.getTable().getModel();
-                model.addColumn(tagToAdd);
+            DefaultTableModel model = (DefaultTableModel) table.getTable().getModel();
+            model.addColumn(tagToAdd);
 
-                gui.getAddNewTag().setText("");
+            gui.getAddNewTag().setText("");
 
-                gui.getFirstTags().removeAllItems();
-                gui.getSecondTags().removeAllItems();
-                gui.getThirdTags().removeAllItems();
-                gui.getFourthTags().removeAllItems();
+            gui.getFirstTags().removeAllItems();
+            gui.getSecondTags().removeAllItems();
+            gui.getThirdTags().removeAllItems();
+            gui.getFourthTags().removeAllItems();
 
-                saveTag.addTagsToBox();
+            saveTag.addTagsToBox();
+        }
+    }
+
+        @Override
+        public void actionPerformed (ActionEvent e){
+            Object src = e.getSource();
+            if (src == gui.getTagButton()) {
+                saveNewTag();
             }
         }
     }
-}
+

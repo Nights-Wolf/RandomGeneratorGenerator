@@ -133,15 +133,19 @@ public class UsedTagListener implements ActionListener {
             DefaultListModel model = (DefaultListModel) gui.getGeneratedNames().getModel();
             for (int i = 0; i < model.getSize(); i++) {
                 long namesId = nameRepository.getNameIdByName(String.valueOf(model.getElementAt(i)));
-                Used used = new Used();
-                used.setName_id(namesId);
-                saveUsed.saveUsed(used);
+                if (usedRepository.getUsedTags().contains(namesId)) {
+                    continue;
+                } else {
+                    Used used = new Used();
+                    used.setName_id(namesId);
+                    saveUsed.saveUsed(used);
+                }
             }
-            if (dialog.isVisible()) {
-                Point point = dialog.getLocationOnScreen();
-                dialog.dispose();
-                tagThrash(point);
-            }
+                if (dialog.isVisible()) {
+                    Point point = dialog.getLocationOnScreen();
+                    dialog.dispose();
+                    tagThrash(point);
+                }
         }
     }
 }

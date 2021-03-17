@@ -16,6 +16,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import java.awt.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -38,6 +40,7 @@ public class EditTagListener implements Runnable {
     private final ContentRepository contentRepository;
     private final CheckBoxTableListener checkBoxTableListener;
 
+    @Autowired
     public EditTagListener(Table table, GUI gui, TagRepository tagRepository, SaveTag saveTag, NameRepository nameRepository, ContentRepository contentRepository, CheckBoxTableListener checkBoxTableListener) {
         this.table = table;
         this.gui = gui;
@@ -60,6 +63,12 @@ public class EditTagListener implements Runnable {
         text = new JTextField();
         text.setBorder(null);
         text.addActionListener(e -> run());
+        text.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusLost(FocusEvent e) {
+                gui.getDeleteTag().setVisible(false);
+            }
+        });
 
         renamePopup = new JPopupMenu();
         renamePopup.setBorder(new MatteBorder(0, 1, 1, 1, Color.DARK_GRAY));
@@ -87,11 +96,11 @@ public class EditTagListener implements Runnable {
 
     @Override
     public void run() {
-        if(tagRepository.getTags().contains(text.getText())) {
+        if(tagRepository.getTags().contains(text.getText().toUpperCase())) {
             JOptionPane.showMessageDialog(new JFrame(), "Tag already exists!");
             renamePopup.setVisible(false);
         } else {
-            tagRepository.updateTag(text.getText(), id);
+            tagRepository.updateTag(text.getText().toUpperCase(), id);
             renamePopup.setVisible(false);
             gui.getFirstTags().removeAllItems();
             gui.getSecondTags().removeAllItems();
@@ -109,7 +118,7 @@ public class EditTagListener implements Runnable {
                     return Boolean.class;
                 }
             };
-            model.addColumn("Content");
+            model.addColumn("CONTENT");
 
             ArrayList<String> tags = tagRepository.getTags();
             ArrayList<String> names = nameRepository.getNames();

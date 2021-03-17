@@ -36,26 +36,30 @@ public class NameListener implements ActionListener {
         gui.getSaveButton().addActionListener(this);
     }
 
+    public void saveNewName() {
+        String nameToAdd = gui.getAddNewName().getText();
+        if (nameRepository.getNames().contains(nameToAdd)) {
+            JOptionPane.showMessageDialog(new JFrame(), "Name already exists!");
+        } else if (nameToAdd.equals("")) {
+            JOptionPane.showMessageDialog(new JFrame(), "Insert name!");
+        } else {
+            Name name = new Name();
+            name.setName_name(nameToAdd);
+            saveName.newName(name);
+
+            DefaultTableModel model = (DefaultTableModel) table.getTable().getModel();
+            String[] addRow = {nameToAdd};
+            model.addRow(addRow);
+
+            gui.getAddNewName().setText("");
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
         if (src == gui.getSaveButton()) {
-            String nameToAdd = gui.getAddNewName().getText();
-            if (nameRepository.getNames().contains(nameToAdd)) {
-                JOptionPane.showMessageDialog(new JFrame(), "Name already exists!");
-            } else if (nameToAdd.equals("")) {
-                JOptionPane.showMessageDialog(new JFrame(), "Insert name!");
-            } else {
-                Name name = new Name();
-                name.setName_name(nameToAdd);
-                saveName.newName(name);
-
-                DefaultTableModel model = (DefaultTableModel) table.getTable().getModel();
-                String[] addRow = {nameToAdd};
-                model.addRow(addRow);
-
-                gui.getAddNewName().setText("");
-            }
+            saveNewName();
         }
     }
 }
