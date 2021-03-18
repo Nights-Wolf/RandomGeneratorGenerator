@@ -77,6 +77,9 @@ public class Table {
         table.getTableHeader().setBackground(new Color(224,131,0));
         table.getTableHeader().setForeground(Color.BLACK);
         table.setGridColor(Color.BLACK);
+        table.setSelectionBackground(new Color(231, 188, 13));
+        table.setSelectionForeground(Color.BLACK);
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);

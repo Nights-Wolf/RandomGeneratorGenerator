@@ -17,6 +17,7 @@ import java.io.IOException;
 public class GUI implements Runnable {
 
     private final Table table;
+    private String selectedName;
     //Frame
     private BufferedImage image;
     private BufferedImage imageOnContent;
@@ -89,7 +90,7 @@ public class GUI implements Runnable {
             frame.setIconImage(new ImageIcon(image).getImage());
             JFrame.setDefaultLookAndFeelDecorated(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(500, 500);
+            frame.setSize(800, 500);
             frame.setVisible(true);
 
         generatingPan.setLayout(new BorderLayout());
@@ -194,10 +195,14 @@ public class GUI implements Runnable {
         listPane.add(removeNamePanel);
         generatedNamesPanel.add(listPane, BorderLayout.CENTER);
         generatingPan.add(generatedNamesPanel, BorderLayout.CENTER);
+        JLabel uselessLabel = new JLabel("by Dawid Całkowski");
+        uselessLabel.setForeground(new Color(231, 188, 13));
+        generatingPan.add(uselessLabel, BorderLayout.SOUTH);
 
         table.getTable().getSelectionModel().addListSelectionListener(e -> {
             int selectedRow = table.getTable().getSelectedRow();
             if (table.getTable().isRowSelected(selectedRow)) {
+                selectedName = String.valueOf(table.getTable().getValueAt(selectedRow, 0));
                 deleteButton.setVisible(true);
             } else {
                 deleteButton.setVisible(false);

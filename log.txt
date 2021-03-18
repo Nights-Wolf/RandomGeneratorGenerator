@@ -1,0 +1,162 @@
+2021-03-18 23:23:58.814  INFO 11948 --- [main] RandomGeneratorGeneratorApplicationTests : Starting RandomGeneratorGeneratorApplicationTests on DESKTOP-HFP0AIQ with PID 11948 (started by Dawid in C:\Users\Dawid\Desktop\RandomGeneratorGenerator)
+2021-03-18 23:23:58.817  INFO 11948 --- [main] RandomGeneratorGeneratorApplicationTests : No active profile set, falling back to default profiles: default
+2021-03-18 23:24:03.406  INFO 11948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-03-18 23:24:03.681  INFO 11948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 234ms. Found 6 JPA repository interfaces.
+2021-03-18 23:24:06.052  INFO 11948 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
+2021-03-18 23:24:06.066  INFO 11948 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-18 23:24:06.074  WARN 11948 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=org.apache.derby.jdbc.EmbeddedDriver was not found, trying direct instantiation.
+2021-03-18 23:24:07.026  INFO 11948 --- [main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (Feature not implemented: No details.)
+2021-03-18 23:24:07.033  INFO 11948 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-18 23:24:07.100  INFO 11948 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:derby:rgg_db (Apache Derby 10.14)
+2021-03-18 23:24:08.172  INFO 11948 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.392s)
+2021-03-18 23:24:08.220  INFO 11948 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "SA": 1
+2021-03-18 23:24:08.224  INFO 11948 --- [main] o.f.core.internal.command.DbMigrate      : Schema "SA" is up to date. No migration necessary.
+2021-03-18 23:24:08.772  INFO 11948 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-18 23:24:09.145  INFO 11948 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-18 23:24:09.540  INFO 11948 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2021-03-18 23:24:10.205  INFO 11948 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-03-18 23:24:13.413  INFO 11948 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.DerbyTenSevenDialect
+2021-03-18 23:24:21.424  INFO 11948 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-18 23:24:21.539  INFO 11948 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-18 23:24:48.175  INFO 11948 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2021-03-18 23:24:48.682  INFO 11948 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2021-03-18 23:24:48.728  INFO 11948 --- [main] RandomGeneratorGeneratorApplicationTests : Started RandomGeneratorGeneratorApplicationTests in 50.953 seconds (JVM running for 58.025)
+2021-03-18 23:24:52.602  INFO 11948 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-18 23:24:52.610  INFO 11948 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-18 23:24:52.614  INFO 11948 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-03-18 23:24:52.680  INFO 11948 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-03-18 23:25:20.508  INFO 17036 --- [main] c.R.RandomGeneratorGeneratorApplication  : Starting RandomGeneratorGeneratorApplication on DESKTOP-HFP0AIQ with PID 17036 (C:\Users\Dawid\Desktop\RandomGeneratorGenerator\target\classes started by Dawid in C:\Users\Dawid\Desktop\RandomGeneratorGenerator)
+2021-03-18 23:25:20.513  INFO 17036 --- [main] c.R.RandomGeneratorGeneratorApplication  : No active profile set, falling back to default profiles: default
+2021-03-18 23:25:21.587  INFO 17036 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-03-18 23:25:21.787  INFO 17036 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 182ms. Found 6 JPA repository interfaces.
+2021-03-18 23:25:22.967  INFO 17036 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
+2021-03-18 23:25:22.987  INFO 17036 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-18 23:25:22.993  WARN 17036 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=org.apache.derby.jdbc.EmbeddedDriver was not found, trying direct instantiation.
+2021-03-18 23:25:23.429  INFO 17036 --- [main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (Feature not implemented: No details.)
+2021-03-18 23:25:23.436  INFO 17036 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-18 23:25:23.483  INFO 17036 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:derby:rgg_db (Apache Derby 10.14)
+2021-03-18 23:25:24.043  INFO 17036 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.151s)
+2021-03-18 23:25:24.063  INFO 17036 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "SA": 1
+2021-03-18 23:25:24.067  INFO 17036 --- [main] o.f.core.internal.command.DbMigrate      : Schema "SA" is up to date. No migration necessary.
+2021-03-18 23:25:24.256  INFO 17036 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-18 23:25:24.434  INFO 17036 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-18 23:25:24.614  INFO 17036 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2021-03-18 23:25:24.933  INFO 17036 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-03-18 23:25:25.257  INFO 17036 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.DerbyTenSevenDialect
+2021-03-18 23:25:26.657  INFO 17036 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-18 23:25:26.672  INFO 17036 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-18 23:25:29.905  INFO 17036 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2021-03-18 23:25:30.176  INFO 17036 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2021-03-18 23:25:30.200  INFO 17036 --- [main] c.R.RandomGeneratorGeneratorApplication  : Started RandomGeneratorGeneratorApplication in 10.373 seconds (JVM running for 11.087)
+2021-03-18 23:25:40.101  INFO 17036 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-18 23:25:40.108  INFO 17036 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-18 23:25:40.111  INFO 17036 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-03-18 23:25:40.172  INFO 17036 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-03-18 23:26:37.835  INFO 14296 --- [main] RandomGeneratorGeneratorApplicationTests : Starting RandomGeneratorGeneratorApplicationTests on DESKTOP-HFP0AIQ with PID 14296 (started by Dawid in C:\Users\Dawid\Desktop\RandomGeneratorGenerator)
+2021-03-18 23:26:37.839  INFO 14296 --- [main] RandomGeneratorGeneratorApplicationTests : No active profile set, falling back to default profiles: default
+2021-03-18 23:26:39.233  INFO 14296 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-03-18 23:26:39.648  INFO 14296 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 384ms. Found 6 JPA repository interfaces.
+2021-03-18 23:26:41.569  INFO 14296 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
+2021-03-18 23:26:41.589  INFO 14296 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-18 23:26:41.602  WARN 14296 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=org.apache.derby.jdbc.EmbeddedDriver was not found, trying direct instantiation.
+2021-03-18 23:26:42.370  INFO 14296 --- [main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (Feature not implemented: No details.)
+2021-03-18 23:26:42.378  INFO 14296 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-18 23:26:42.447  INFO 14296 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:derby:rgg_db (Apache Derby 10.14)
+2021-03-18 23:26:43.095  INFO 14296 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.168s)
+2021-03-18 23:26:43.125  INFO 14296 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "SA": 1
+2021-03-18 23:26:43.129  INFO 14296 --- [main] o.f.core.internal.command.DbMigrate      : Schema "SA" is up to date. No migration necessary.
+2021-03-18 23:26:43.450  INFO 14296 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-18 23:26:43.675  INFO 14296 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-18 23:26:44.031  INFO 14296 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2021-03-18 23:26:44.645  INFO 14296 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-03-18 23:26:45.268  INFO 14296 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.DerbyTenSevenDialect
+2021-03-18 23:26:47.312  INFO 14296 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-18 23:26:47.365  INFO 14296 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-18 23:26:50.588  INFO 14296 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2021-03-18 23:26:50.860  INFO 14296 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2021-03-18 23:26:50.888  INFO 14296 --- [main] RandomGeneratorGeneratorApplicationTests : Started RandomGeneratorGeneratorApplicationTests in 13.709 seconds (JVM running for 15.685)
+2021-03-18 23:26:52.088  INFO 14296 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-18 23:26:52.093  INFO 14296 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-18 23:26:52.096  INFO 14296 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-03-18 23:26:52.105  INFO 14296 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-03-18 23:27:07.875  INFO 3924 --- [main] c.R.RandomGeneratorGeneratorApplication  : Starting RandomGeneratorGeneratorApplication on DESKTOP-HFP0AIQ with PID 3924 (C:\Users\Dawid\Desktop\RandomGeneratorGenerator\target\classes started by Dawid in C:\Users\Dawid\Desktop\RandomGeneratorGenerator)
+2021-03-18 23:27:07.880  INFO 3924 --- [main] c.R.RandomGeneratorGeneratorApplication  : No active profile set, falling back to default profiles: default
+2021-03-18 23:27:09.477  INFO 3924 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-03-18 23:27:09.707  INFO 3924 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 210ms. Found 6 JPA repository interfaces.
+2021-03-18 23:27:11.493  INFO 3924 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
+2021-03-18 23:27:11.539  INFO 3924 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-18 23:27:11.547  WARN 3924 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=org.apache.derby.jdbc.EmbeddedDriver was not found, trying direct instantiation.
+2021-03-18 23:27:12.058  INFO 3924 --- [main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (Feature not implemented: No details.)
+2021-03-18 23:27:12.063  INFO 3924 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-18 23:27:12.098  INFO 3924 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:derby:rgg_db (Apache Derby 10.14)
+2021-03-18 23:27:12.647  INFO 3924 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.158s)
+2021-03-18 23:27:12.669  INFO 3924 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "SA": 1
+2021-03-18 23:27:12.672  INFO 3924 --- [main] o.f.core.internal.command.DbMigrate      : Schema "SA" is up to date. No migration necessary.
+2021-03-18 23:27:12.871  INFO 3924 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-18 23:27:13.030  INFO 3924 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-18 23:27:13.222  INFO 3924 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2021-03-18 23:27:13.519  INFO 3924 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-03-18 23:27:13.853  INFO 3924 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.DerbyTenSevenDialect
+2021-03-18 23:27:15.218  INFO 3924 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-18 23:27:15.236  INFO 3924 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-18 23:27:17.867  INFO 3924 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2021-03-18 23:27:18.229  INFO 3924 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2021-03-18 23:27:18.242  INFO 3924 --- [main] c.R.RandomGeneratorGeneratorApplication  : Started RandomGeneratorGeneratorApplication in 11.226 seconds (JVM running for 12.093)
+2021-03-18 23:28:26.087  INFO 3924 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-18 23:28:26.091  INFO 3924 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-18 23:28:26.092  INFO 3924 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-03-18 23:28:26.098  INFO 3924 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-03-18 23:33:57.555  INFO 7680 --- [main] RandomGeneratorGeneratorApplicationTests : Starting RandomGeneratorGeneratorApplicationTests on DESKTOP-HFP0AIQ with PID 7680 (started by Dawid in C:\Users\Dawid\Desktop\RandomGeneratorGenerator)
+2021-03-18 23:33:57.559  INFO 7680 --- [main] RandomGeneratorGeneratorApplicationTests : No active profile set, falling back to default profiles: default
+2021-03-18 23:33:59.064  INFO 7680 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-03-18 23:33:59.316  INFO 7680 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 226ms. Found 6 JPA repository interfaces.
+2021-03-18 23:34:01.165  INFO 7680 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
+2021-03-18 23:34:01.183  INFO 7680 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-18 23:34:01.194  WARN 7680 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=org.apache.derby.jdbc.EmbeddedDriver was not found, trying direct instantiation.
+2021-03-18 23:34:01.766  INFO 7680 --- [main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (Feature not implemented: No details.)
+2021-03-18 23:34:01.771  INFO 7680 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-18 23:34:01.802  INFO 7680 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:derby:rgg_db (Apache Derby 10.14)
+2021-03-18 23:34:02.488  INFO 7680 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.214s)
+2021-03-18 23:34:02.513  INFO 7680 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "SA": 1
+2021-03-18 23:34:02.517  INFO 7680 --- [main] o.f.core.internal.command.DbMigrate      : Schema "SA" is up to date. No migration necessary.
+2021-03-18 23:34:02.783  INFO 7680 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-18 23:34:03.039  INFO 7680 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-18 23:34:03.254  INFO 7680 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2021-03-18 23:34:03.671  INFO 7680 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-03-18 23:34:04.163  INFO 7680 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.DerbyTenSevenDialect
+2021-03-18 23:34:05.809  INFO 7680 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-18 23:34:05.831  INFO 7680 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-18 23:34:08.854  INFO 7680 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2021-03-18 23:34:09.148  INFO 7680 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2021-03-18 23:34:09.177  INFO 7680 --- [main] RandomGeneratorGeneratorApplicationTests : Started RandomGeneratorGeneratorApplicationTests in 12.259 seconds (JVM running for 14.197)
+2021-03-18 23:34:10.151  INFO 7680 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-18 23:34:10.151  INFO 7680 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-18 23:34:10.151  INFO 7680 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-03-18 23:34:10.166  INFO 7680 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-03-18 23:34:24.101  INFO 16904 --- [main] c.R.RandomGeneratorGeneratorApplication  : Starting RandomGeneratorGeneratorApplication on DESKTOP-HFP0AIQ with PID 16904 (C:\Users\Dawid\Desktop\RandomGeneratorGenerator\target\classes started by Dawid in C:\Users\Dawid\Desktop\RandomGeneratorGenerator)
+2021-03-18 23:34:24.106  INFO 16904 --- [main] c.R.RandomGeneratorGeneratorApplication  : No active profile set, falling back to default profiles: default
+2021-03-18 23:34:25.176  INFO 16904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-03-18 23:34:25.366  INFO 16904 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 173ms. Found 6 JPA repository interfaces.
+2021-03-18 23:34:26.667  INFO 16904 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.4.4 by Redgate
+2021-03-18 23:34:26.693  INFO 16904 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-18 23:34:26.703  WARN 16904 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=org.apache.derby.jdbc.EmbeddedDriver was not found, trying direct instantiation.
+2021-03-18 23:34:27.205  INFO 16904 --- [main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (Feature not implemented: No details.)
+2021-03-18 23:34:27.210  INFO 16904 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-18 23:34:27.240  INFO 16904 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:derby:rgg_db (Apache Derby 10.14)
+2021-03-18 23:34:27.702  INFO 16904 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.147s)
+2021-03-18 23:34:27.721  INFO 16904 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "SA": 1
+2021-03-18 23:34:27.724  INFO 16904 --- [main] o.f.core.internal.command.DbMigrate      : Schema "SA" is up to date. No migration necessary.
+2021-03-18 23:34:27.902  INFO 16904 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-18 23:34:28.063  INFO 16904 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-18 23:34:28.233  INFO 16904 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2021-03-18 23:34:28.536  INFO 16904 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-03-18 23:34:28.866  INFO 16904 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.DerbyTenSevenDialect
+2021-03-18 23:34:30.163  INFO 16904 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-18 23:34:30.179  INFO 16904 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-18 23:34:32.496  INFO 16904 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2021-03-18 23:34:32.848  INFO 16904 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2021-03-18 23:34:32.865  INFO 16904 --- [main] c.R.RandomGeneratorGeneratorApplication  : Started RandomGeneratorGeneratorApplication in 9.443 seconds (JVM running for 10.095)
+2021-03-18 23:35:52.876  INFO 16904 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-18 23:35:52.892  INFO 16904 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-18 23:35:52.894  INFO 16904 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-03-18 23:35:52.905  INFO 16904 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

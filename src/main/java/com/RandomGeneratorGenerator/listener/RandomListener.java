@@ -45,6 +45,9 @@ public class RandomListener implements ActionListener {
             }
             model.addAll(names);
             gui.getGeneratedNames().setModel(model);
+            DefaultListCellRenderer renderer = new DefaultListCellRenderer();
+            renderer.setHorizontalAlignment(SwingConstants.CENTER);
+            gui.getGeneratedNames().setCellRenderer(renderer);
 
             if (names.size() != 0) {
                 gui.getGeneratedNames().setVisible(true);

@@ -1,5 +1,6 @@
 package com.RandomGeneratorGenerator.listener;
 
+import com.RandomGeneratorGenerator.GUI;
 import com.RandomGeneratorGenerator.model.Content;
 import com.RandomGeneratorGenerator.repository.ContentRepository;
 import com.RandomGeneratorGenerator.repository.NameRepository;
@@ -24,14 +25,16 @@ public class CheckBoxTableListener implements TableModelListener {
     private final SaveContent saveContent;
     private final ContentRepository contentRepository;
     private final TagRepository tagRepository;
+    private final GUI gui;
 
     @Autowired
-    public CheckBoxTableListener(Table table, NameRepository nameRepository, SaveContent saveContent, ContentRepository contentRepository, TagRepository tagRepository) {
+    public CheckBoxTableListener(Table table, NameRepository nameRepository, SaveContent saveContent, ContentRepository contentRepository, TagRepository tagRepository, GUI gui) {
         this.table = table;
         this.nameRepository = nameRepository;
         this.saveContent = saveContent;
         this.contentRepository = contentRepository;
         this.tagRepository = tagRepository;
+        this.gui = gui;
     }
 
 
@@ -62,11 +65,13 @@ public class CheckBoxTableListener implements TableModelListener {
             }
         }
         if (column == 0) {
-            String nameToEdit = model.getValueAt(row, 0).toString();
+            int nameSelected = table.getTable().getSelectedRow();
+            int modelRow = table.getTable().convertRowIndexToModel(nameSelected);
+            String nameToEdit = model.getValueAt(modelRow, 0).toString();
             if (nameRepository.getNames().contains(nameToEdit)) {
                 JOptionPane.showMessageDialog(new JFrame(), "Name already exists!");
             } else {
-                long nameId = row + 1;
+                long nameId = nameRepository.getNameIdByName(gui.getSelectedName());
                 nameRepository.updateName(nameToEdit, nameId);
             }
         }
