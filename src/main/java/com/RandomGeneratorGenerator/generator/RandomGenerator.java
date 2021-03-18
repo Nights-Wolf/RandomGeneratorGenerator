@@ -66,6 +66,7 @@ public class RandomGenerator {
                 }
             }
         }catch (AopInvocationException e) {
+            JOptionPane.showMessageDialog(new JFrame(), "Second tag is not selected or is empty!");
         }
 
 try {
@@ -82,7 +83,8 @@ try {
         }
     }
         } catch (AopInvocationException e) {
-        }
+    JOptionPane.showMessageDialog(new JFrame(), "Third tag is not selected or is empty!");
+}
 try {
     if (thirdTagNamesValue.size() > 0) {
         String selectedTagFourth = String.valueOf(gui.getFourthTags().getSelectedItem());
@@ -98,7 +100,8 @@ try {
         }
     }
         } catch (AopInvocationException e) {
-        }
+            JOptionPane.showMessageDialog(new JFrame(), "Fourth tag is not selected or is empty!");
+}
 
     if (secondTagNamesValue.size() <= 0) {
         for (Long e : firstTagNamesValue) {
