@@ -186,6 +186,8 @@ public class GUI implements Runnable {
         generatedNames.setVisible(false);
         generatedNames.setBackground(new Color(224,131,0));
         generatedNames.setForeground(Color.BLACK);
+        generatedNames.setSelectionBackground(new Color(231, 188, 13));
+        generatedNames.setSelectionForeground(Color.BLACK);
         scroller.setVisible(false);
         JPanel listPane = new JPanel();
         listPane.setLayout(new GridLayout());
@@ -262,6 +264,8 @@ public class GUI implements Runnable {
         contentPanel.add(setsChoosingPanel, BorderLayout.NORTH);
         setsList.setBackground(new Color(224,131,0));
         setsList.setForeground(Color.BLACK);
+        setsList.setSelectionBackground(new Color(231, 188, 13));
+        setsList.setSelectionForeground(Color.BLACK);
         listPanel.add(setsList);
         removeSet.setVisible(false);
         removeSet.setBackground(new Color(224,131,0));
