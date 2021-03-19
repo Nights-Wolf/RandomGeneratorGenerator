@@ -77,6 +77,10 @@ try {
             DefaultListModel model = new DefaultListModel();
             model.addAll(sets);
             gui.getSetsList().setModel(model);
+
+            DefaultListCellRenderer renderer = new DefaultListCellRenderer();
+            renderer.setHorizontalAlignment(SwingConstants.CENTER);
+            gui.getSetsList().setCellRenderer(renderer);
         }
 } catch (AopInvocationException exception) {
     JOptionPane.showMessageDialog(new JFrame("Warning!"),

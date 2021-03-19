@@ -16,10 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import java.awt.*;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 @Component
@@ -63,12 +60,6 @@ public class EditTagListener implements Runnable {
         text = new JTextField();
         text.setBorder(null);
         text.addActionListener(e -> run());
-        text.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusLost(FocusEvent e) {
-                gui.getDeleteTag().setVisible(false);
-            }
-        });
 
         renamePopup = new JPopupMenu();
         renamePopup.setBorder(new MatteBorder(0, 1, 1, 1, Color.DARK_GRAY));

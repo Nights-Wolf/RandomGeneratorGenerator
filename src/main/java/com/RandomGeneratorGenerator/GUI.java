@@ -58,6 +58,7 @@ public class GUI implements Runnable {
     private final JButton removeSet = new JButton("Remove");
     private final JButton choseSet = new JButton("Show set");
     private final JList setsList = new JList();
+    private final JScrollPane setsScroller = new JScrollPane(setsList, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
     private final Thread runner;
 
@@ -266,7 +267,8 @@ public class GUI implements Runnable {
         setsList.setForeground(Color.BLACK);
         setsList.setSelectionBackground(new Color(231, 188, 13));
         setsList.setSelectionForeground(Color.BLACK);
-        listPanel.add(setsList);
+        setsScroller.setPreferredSize(new Dimension(100, 300));
+        listPanel.add(setsScroller);
         removeSet.setVisible(false);
         removeSet.setBackground(new Color(224,131,0));
         removeSet.setForeground(Color.BLACK);
